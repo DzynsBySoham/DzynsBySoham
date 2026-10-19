@@ -1,0 +1,2661 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>DzynsBySoham — Thumbnail &amp; Poster Design Studio</title>
+<meta name="description" content="DzynsBySoham — Designs by Soham. 5+ years designing thumbnails, posters and typographic artwork for India's hip-hop scene. Worked with Emiway Bantai. Currently designing the mainstream DHH/IHH thumbnail scene." />
+<meta name="theme-color" content="#08080A" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,200..800&family=Inter+Tight:ital,wght@0,100..900;1,100..900&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='26' fill='%230A0A0C'/%3E%3Ctext x='50' y='70' font-family='Helvetica,Arial' font-size='62' font-weight='800' text-anchor='middle' fill='%23CCFF2E'%3ED%3C/text%3E%3C/svg%3E">
+<style>
+/* ============================================================
+   DZYNSBYSOHAM — design tokens
+   ============================================================ */
+:root{
+  --paper:#08080A;
+  --paper-2:#121216;
+  --paper-3:#1C1C22;
+  --ink:#F5F5F2;
+  --ink-2:#C2C2CC;
+  --muted:#8A8A99;
+  --line:rgba(255,255,255,.13);
+  --line-2:rgba(255,255,255,.07);
+  --panel:#000000;
+  --on-ink:#08080A;
+
+  --acid:#CCFF2E;
+  --acid-deep:#A9E800;
+  --blue:#2B4CFF;
+  --coral:#FF4F2E;
+  --violet:#9B7BFF;
+  --mint:#00E0A4;
+
+  --r-s:12px; --r-m:20px; --r-l:28px; --r-xl:40px;
+  --sh-1:0 1px 2px rgba(0,0,0,.45), 0 4px 16px -6px rgba(0,0,0,.55);
+  --sh-2:0 2px 6px rgba(0,0,0,.45), 0 18px 44px -18px rgba(0,0,0,.66);
+  --sh-3:0 4px 12px rgba(0,0,0,.5), 0 40px 90px -30px rgba(0,0,0,.78);
+  --ease:cubic-bezier(.16,1,.3,1);
+  --ease-io:cubic-bezier(.65,0,.35,1);
+  --f-display:"Inter Tight","Helvetica Neue",Helvetica,Arial,sans-serif;
+  --f-body:"Inter","Helvetica Neue",Helvetica,Arial,sans-serif;
+  --f-mono:"JetBrains Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
+  --maxw:1280px;
+  --nav-h:72px;
+}
+
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:calc(var(--nav-h) + 20px);-webkit-text-size-adjust:100%}
+body{
+  margin:0;background:var(--paper);color:var(--ink);
+  font-family:var(--f-body);font-size:17px;line-height:1.55;font-weight:400;
+  -webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;
+  overflow-x:hidden;letter-spacing:-.005em;
+}
+img,svg{display:block;max-width:100%}
+button,input,textarea{font:inherit;color:inherit}
+a{color:inherit;text-decoration:none}
+::selection{background:var(--acid);color:#000}
+
+::-webkit-scrollbar{width:11px;height:11px}
+::-webkit-scrollbar-track{background:var(--paper)}
+::-webkit-scrollbar-thumb{background:#34343E;border-radius:99px;border:3px solid var(--paper)}
+::-webkit-scrollbar-thumb:hover{background:#46465A}
+
+h1,h2,h3,h4{margin:0;font-family:var(--f-display);font-weight:700;letter-spacing:-.04em;line-height:.94}
+p{margin:0}
+
+.wrap{width:100%;max-width:var(--maxw);margin:0 auto;padding:0 28px}
+@media(max-width:640px){.wrap{padding:0 18px}}
+
+.sec{padding:clamp(80px,11vw,160px) 0;position:relative}
+.sec-head{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,462px);gap:26px 48px;align-items:end;margin-bottom:56px}
+@media(max-width:900px){.sec-head{grid-template-columns:1fr;gap:18px}}
+.eyebrow{
+  display:inline-flex;align-items:center;gap:9px;font-family:var(--f-mono);
+  font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);
+  margin-bottom:20px;
+}
+.eyebrow .dot{width:7px;height:7px;border-radius:99px;background:var(--acid);box-shadow:0 0 0 4px rgba(204,255,46,.25);animation:pulse 2.2s var(--ease-io) infinite}
+@keyframes pulse{0%,100%{box-shadow:0 0 0 3px rgba(204,255,46,.28)}50%{box-shadow:0 0 0 8px rgba(204,255,46,0)}}
+.h-sec{font-size:clamp(38px,6.4vw,86px);max-width:15ch}
+.h-sec .it{font-style:italic;font-weight:400}
+.lede{color:var(--ink-2);font-size:clamp(16px,1.35vw,19px);max-width:46ch;line-height:1.55}
+.grad-ink{background:linear-gradient(100deg,#FFFFFF 0%,#8C8C9C 55%,#FFFFFF 100%);-webkit-background-clip:text;background-clip:text;color:transparent}
+.hl{background:linear-gradient(0deg,var(--acid) 0 34%,transparent 34%);padding:0 .1em}
+.hl-b{background:linear-gradient(0deg,var(--acid) 0 18%,transparent 18%);padding:0 .08em}
+
+.btn{
+  position:relative;display:inline-flex;align-items:center;gap:10px;
+  padding:14px 24px;border-radius:99px;border:1px solid var(--line);
+  background:var(--paper-2);font-weight:600;font-size:15px;letter-spacing:-.005em;
+  cursor:pointer;overflow:hidden;isolation:isolate;white-space:nowrap;
+  transition:transform .4s var(--ease),box-shadow .4s var(--ease),border-color .3s;
+  will-change:transform;
+}
+.btn .lbl{position:relative;z-index:2;display:inline-flex;align-items:center;gap:10px}
+.btn .fill{position:absolute;inset:0;z-index:1;background:var(--ink);transform:translateY(101%);transition:transform .55s var(--ease);border-radius:99px}
+.btn:hover{color:var(--on-ink);border-color:var(--ink);box-shadow:var(--sh-2)}
+.btn:hover .fill{transform:translateY(0)}
+.btn-dark{background:var(--ink);color:var(--on-ink);border-color:var(--ink)}
+.btn-dark .fill{background:var(--acid)}
+.btn-dark:hover{color:#000;border-color:var(--acid)}
+.btn-acid{background:var(--acid);color:#000;border-color:var(--acid)}
+.btn-acid .fill{background:var(--ink)}
+.btn-acid:hover{color:var(--on-ink);border-color:var(--ink)}
+.btn svg{width:17px;height:17px;stroke-width:2;flex:none}
+.btn-lg{padding:17px 30px;font-size:16px}
+
+
+.prog{position:fixed;top:0;left:0;height:2.5px;background:linear-gradient(90deg,var(--acid),var(--blue),var(--coral));z-index:9000;width:0;transition:width .1s linear}
+
+.hdr{position:fixed;top:0;left:0;right:0;z-index:800;transition:all .5s var(--ease)}
+.hdr-in{
+  height:var(--nav-h);display:flex;align-items:center;justify-content:space-between;gap:20px;
+  max-width:var(--maxw);margin:0 auto;padding:0 28px;transition:height .5s var(--ease);
+}
+.hdr.stuck .hdr-in{height:60px;background:rgba(8,8,10,.88);backdrop-filter:blur(26px) saturate(180%);-webkit-backdrop-filter:blur(26px) saturate(180%);border-bottom:1px solid rgba(255,255,255,.09);box-shadow:0 12px 30px -22px rgba(0,0,0,.7)}
+.hdr.stuck .brand{color:var(--ink)}
+.hdr.stuck .nav-pill{background:rgba(18,18,22,.86);backdrop-filter:blur(24px) saturate(180%);-webkit-backdrop-filter:blur(24px) saturate(180%);box-shadow:0 1px 0 rgba(255,255,255,.07),0 10px 30px -16px rgba(0,0,0,.6);border-color:transparent}
+.brand{display:flex;align-items:center;gap:11px;font-family:var(--f-display);font-weight:800;font-size:17px;letter-spacing:-.03em}
+.brand-mark{width:32px;height:32px;border-radius:9px;background:var(--paper-3);border:1px solid var(--line);display:grid;place-items:center;flex:none;overflow:hidden;transition:transform .5s var(--ease)}
+.brand-mark svg{width:18px;height:18px}
+.brand:hover .brand-mark{transform:rotate(90deg)}
+.brand small{display:block;font-family:var(--f-mono);font-size:9px;letter-spacing:.2em;color:var(--muted);font-weight:400;margin-top:-3px}
+.nav-pill{
+  display:flex;align-items:center;gap:2px;padding:4px;border-radius:99px;border:1px solid var(--line-2);
+  background:rgba(18,18,22,.55);transition:all .5s var(--ease);
+}
+.nav-pill a{
+  position:relative;padding:9px 16px;border-radius:99px;font-size:14.5px;font-weight:500;color:var(--ink-2);
+  transition:color .3s;white-space:nowrap;z-index:0;
+}
+.nav-pill a:hover{color:var(--ink)}
+.nav-pill a.on{color:var(--ink);font-weight:600}
+.nav-pill a .pip{position:absolute;inset:0;border-radius:99px;background:var(--paper-3);box-shadow:0 1px 3px rgba(0,0,0,.5);opacity:0;transform:scale(.8);transition:opacity .35s var(--ease),transform .35s var(--ease);z-index:-1}
+.nav-pill a.on .pip{opacity:1;transform:scale(1)}
+.hdr-cta{display:flex;align-items:center;gap:10px}
+.hdr-cta .btn{padding:11px 19px;font-size:14.5px}
+.hdr-cta .btn.hdr-wa{display:none;width:40px;height:40px;padding:0;justify-content:center;border-radius:12px;flex:none}
+.hdr-cta .btn.hdr-wa svg{width:19px;height:19px;stroke:currentColor;fill:none;stroke-width:1.9;flex:none}
+.hdr-cta .btn.hdr-wa .lbl{gap:0}
+.burger{display:none;width:40px;height:40px;border-radius:12px;border:1px solid var(--line);background:var(--paper-2);cursor:pointer;place-items:center;align-content:center}
+.burger span{display:block;width:16px;height:1.8px;background:var(--ink);border-radius:2px;transition:.4s var(--ease)}
+.burger span+span{margin-top:4px}
+.burger.on span:nth-child(1){transform:translateY(5.8px) rotate(45deg)}
+.burger.on span:nth-child(2){opacity:0}
+.burger.on span:nth-child(3){transform:translateY(-5.8px) rotate(-45deg)}
+@media(max-width:1000px){
+  .nav-pill{display:none}
+  .burger{display:grid}
+}
+@media(max-width:760px){
+  .hdr-cta .btn:not(.hdr-wa){display:none}
+  .hdr-cta .btn.hdr-wa{display:inline-flex}
+}
+
+.mmenu{position:fixed;inset:0;z-index:790;background:var(--paper);display:flex;flex-direction:column;justify-content:center;padding:90px 28px 40px;opacity:0;pointer-events:none;transition:opacity .45s var(--ease)}
+.mmenu.on{opacity:1;pointer-events:auto}
+.mmenu a.m-link{font-family:var(--f-display);font-size:clamp(34px,10vw,58px);font-weight:700;letter-spacing:-.045em;padding:6px 0;display:block;overflow:hidden}
+.mmenu a.m-link span{display:block;transform:translateY(110%);transition:transform .7s var(--ease)}
+.mmenu.on a.m-link span{transform:translateY(0)}
+.mmenu a.m-link i{font-style:normal;color:var(--muted);font-size:.42em;vertical-align:super;font-family:var(--f-mono)}
+.mmenu-foot{margin-top:auto;padding-top:30px;border-top:1px solid var(--line);display:flex;flex-wrap:wrap;gap:12px;align-items:center;justify-content:space-between}
+
+.hero{padding:calc(var(--nav-h) + clamp(40px,7vw,92px)) 0 clamp(40px,6vw,70px);position:relative;overflow:hidden}
+.hero-bg{position:absolute;inset:0;pointer-events:none;z-index:0}
+.hero-bg .blob{position:absolute;border-radius:50%;filter:blur(80px);opacity:.5}
+.b1{width:44vw;height:44vw;max-width:620px;max-height:620px;background:radial-gradient(circle,rgba(204,255,46,.55),transparent 68%);top:-16%;left:-10%;animation:float1 18s var(--ease-io) infinite}
+.b2{width:38vw;height:38vw;max-width:520px;max-height:520px;background:radial-gradient(circle,rgba(43,76,255,.26),transparent 68%);top:6%;right:-8%;animation:float2 22s var(--ease-io) infinite}
+.b3{width:30vw;height:30vw;max-width:420px;max-height:420px;background:radial-gradient(circle,rgba(255,79,46,.22),transparent 68%);bottom:-12%;left:34%;animation:float3 26s var(--ease-io) infinite}
+@keyframes float1{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(6%,7%) scale(1.1)}}
+@keyframes float2{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(-7%,5%) scale(.92)}}
+@keyframes float3{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(5%,-6%) scale(1.08)}}
+.grid-lines{position:absolute;inset:0;background-image:linear-gradient(to right,rgba(255,255,255,.05) 1px,transparent 1px);background-size:calc(100%/6) 100%;mask-image:radial-gradient(ellipse 80% 60% at 50% 40%,#000,transparent 75%);-webkit-mask-image:radial-gradient(ellipse 80% 60% at 50% 40%,#000,transparent 75%)}
+
+.hero-in{position:relative;z-index:2;text-align:center}
+
+.hero-h1{
+  font-size:clamp(2rem,8.9vw,8.4rem);
+  line-height:1;letter-spacing:-.045em;font-weight:700;
+  display:block;white-space:nowrap;
+}
+.hero-sub{
+  margin:clamp(24px,3.2vw,38px) auto 0;max-width:62ch;color:var(--ink-2);
+  font-size:clamp(15.5px,1.55vw,20px);line-height:1.5;
+}
+.hero-sub b{color:var(--ink);font-weight:600}
+.hero-cta{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;margin-top:clamp(26px,3.4vw,38px)}
+.hero-note{margin-top:18px;font-family:var(--f-mono);font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+
+.sticker{position:absolute;z-index:3;pointer-events:none;user-select:none}
+.sticker-rot{animation:sway 7s var(--ease-io) infinite}
+@keyframes sway{0%,100%{transform:rotate(var(--rot)) translateY(0)}50%{transform:rotate(calc(var(--rot) + 2deg)) translateY(-10px)}}
+.st-badge{
+  left:3%;top:20%;width:clamp(96px,11vw,146px);height:clamp(96px,11vw,146px);border-radius:50%;
+  background:var(--acid);display:grid;place-items:center;text-align:center;box-shadow:var(--sh-2);
+  font-family:var(--f-display);font-weight:800;font-size:clamp(15px,1.65vw,22px);line-height:.92;letter-spacing:-.04em;color:#000;
+}
+.st-badge span{font-family:var(--f-mono);font-size:8.5px;letter-spacing:.2em;display:block;margin-top:6px;font-weight:500;line-height:1.2}
+.st-note{
+  right:2.5%;top:16%;background:var(--paper-2);border-radius:16px;padding:13px 16px;box-shadow:var(--sh-2);
+  border:1px solid var(--line-2);max-width:196px;font-size:12.5px;line-height:1.4;color:var(--ink-2);text-align:left;
+}
+.st-note b{display:block;font-family:var(--f-mono);font-size:9.5px;letter-spacing:.16em;color:var(--ink);text-transform:uppercase;margin-bottom:6px}
+.st-arrow{left:9%;bottom:22%;width:clamp(70px,8vw,110px)}
+.st-note2{
+  right:5%;bottom:16%;background:var(--panel);color:var(--ink);border:1px solid var(--line);border-radius:16px;padding:14px 17px;box-shadow:var(--sh-3);
+  text-align:left;max-width:220px;
+}
+.st-note2 b{display:block;font-family:var(--f-mono);font-size:9.5px;letter-spacing:.16em;color:var(--acid);text-transform:uppercase;margin-bottom:7px}
+.st-note2 .row{display:flex;align-items:center;gap:9px;font-size:13px;font-weight:600;padding:3px 0}
+.st-note2 .row .av{width:22px;height:22px;border-radius:6px;background:rgba(255,255,255,.12);display:grid;place-items:center;font-size:10px;font-family:var(--f-mono);flex:none}
+@media(max-width:1080px){.st-note2,.st-note{display:none}}
+@media(max-width:760px){.st-badge,.st-arrow{display:none}}
+
+.hstats{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:var(--r-l);overflow:hidden;margin-top:clamp(46px,6vw,80px);box-shadow:var(--sh-1)}
+.hstats .hs{background:var(--paper-2);padding:26px 22px;position:relative;overflow:hidden}
+.hstats .hs .n{font-family:var(--f-display);font-size:clamp(30px,3.6vw,48px);font-weight:800;letter-spacing:-.045em;line-height:1;display:flex;align-items:baseline;gap:2px}
+.hstats .hs .n sup{font-size:.42em;font-weight:600;vertical-align:super;color:var(--blue);margin-left:3px;line-height:0}
+.hstats .hs .l{font-family:var(--f-mono);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-top:11px}
+@media(max-width:860px){.hstats{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:460px){.hstats .hs{padding:20px 16px}}
+
+/* ============================================================
+   Marquee
+   ============================================================ */
+.mq{overflow:hidden;border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:var(--paper-2);padding:18px 0;position:relative;z-index:3}
+.mq-row{display:flex;width:max-content;animation:mq 34s linear infinite}
+.mq-row.rev{animation-duration:44s;animation-direction:reverse}
+.mq:hover .mq-row{animation-play-state:paused}
+@keyframes mq{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+.mq-item{display:flex;align-items:center;gap:26px;padding-right:26px;font-family:var(--f-display);font-weight:700;font-size:clamp(18px,2.2vw,30px);letter-spacing:-.04em;white-space:nowrap;color:var(--ink)}
+.mq-item .star{color:var(--acid);-webkit-text-stroke:1px var(--ink);font-size:.8em;transform:translateY(-2px)}
+.mq-item .o{color:var(--muted);font-weight:400;font-style:italic}
+.mq.dark{background:var(--panel);border-color:rgba(255,255,255,.1)}
+.mq.dark .mq-item{color:#fff}
+.mq.dark .mq-item .o{color:rgba(255,255,255,.45)}
+
+/* ============================================================
+   Scene strip
+   ============================================================ */
+.scene-strip{background:var(--panel);color:var(--ink);border-top:1px solid var(--line);padding:26px 0;overflow:hidden;position:relative}
+.scene-strip .mq-item{font-size:clamp(15px,1.9vw,25px);font-weight:600;letter-spacing:-.02em}
+.scene-strip .sq{width:9px;height:9px;border-radius:2px;background:var(--acid);display:inline-block;flex:none}
+.scene-strip .sq.b{background:var(--blue)} .scene-strip .sq.c{background:var(--coral)}
+.scene-strip .sq.v{background:var(--violet)} .scene-strip .sq.m{background:var(--mint)}
+
+/* ============================================================
+   Bento / studio
+   ============================================================ */
+.bento{display:grid;grid-template-columns:repeat(12,1fr);gap:18px}
+.card{
+  background:var(--paper-2);border:1px solid var(--line-2);border-radius:var(--r-l);
+  box-shadow:var(--sh-1);position:relative;overflow:hidden;
+  transition:transform .5s var(--ease),box-shadow .5s var(--ease),border-color .4s;
+}
+.card:hover{box-shadow:var(--sh-2);border-color:var(--line)}
+.b-4{grid-column:span 4}.b-5{grid-column:span 5}.b-6{grid-column:span 6}
+.b-7{grid-column:span 7}.b-8{grid-column:span 8}.b-12{grid-column:span 12}
+@media(max-width:1000px){.b-4,.b-5,.b-6,.b-7,.b-8{grid-column:span 12}}
+
+.about-card{padding:clamp(26px,3vw,40px)}
+.about-card h3{font-size:clamp(24px,2.6vw,34px);letter-spacing:-.032em;margin-bottom:16px}
+.about-card p{color:var(--ink-2);font-size:16.5px}
+.about-card p+p{margin-top:14px}
+.about-card b{color:var(--ink);font-weight:600}
+.sig{margin-top:26px;display:flex;align-items:center;gap:14px;padding-top:22px;border-top:1px solid var(--line-2)}
+.sig .mark{width:48px;height:48px;border-radius:14px;background:var(--paper-3);border:1px solid var(--line);display:grid;place-items:center;flex:none}
+.sig .mark svg{width:26px;height:26px}
+.sig .nm{font-family:var(--f-display);font-weight:800;font-size:17px;letter-spacing:-.03em;display:block}
+.sig .rl{font-family:var(--f-mono);font-size:10.5px;letter-spacing:.13em;text-transform:uppercase;color:var(--muted);display:block}
+
+.feature-card{
+  padding:clamp(26px,3vw,40px);background:var(--panel);color:var(--ink);border:1px solid var(--line);
+  display:flex;flex-direction:column;justify-content:space-between;min-height:330px;
+}
+.feature-card .tag{font-family:var(--f-mono);font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--acid)}
+.feature-card h3{font-size:clamp(26px,3.2vw,42px);letter-spacing:-.038em;margin:16px 0 14px;line-height:1.02}
+.feature-card p{color:rgba(255,255,255,.66);font-size:15.5px}
+.feature-card .glow{position:absolute;width:340px;height:340px;border-radius:50%;filter:blur(70px);opacity:.5;background:radial-gradient(circle,var(--acid),transparent 70%);right:-110px;top:-110px;pointer-events:none}
+.feature-card .chiprow{display:flex;flex-wrap:wrap;gap:8px;margin-top:22px;position:relative;z-index:2}
+.chip{
+  font-family:var(--f-mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;
+  padding:6px 12px;border-radius:99px;border:1px solid rgba(255,255,255,.18);color:rgba(255,255,255,.85);
+  transition:all .3s var(--ease);
+}
+.feature-card .chip:hover{background:var(--acid);color:#000;border-color:var(--acid)}
+
+
+.stat-tile{padding:clamp(24px,2.6vw,32px);display:flex;flex-direction:column;justify-content:space-between;min-height:230px}
+.stat-tile .big{font-family:var(--f-display);font-weight:800;font-size:clamp(46px,6vw,86px);line-height:.9;letter-spacing:-.05em}
+.stat-tile .big sup{font-size:.36em;vertical-align:super;color:var(--blue);letter-spacing:-.02em;margin-left:3px;line-height:0}
+.stat-tile .cap{font-size:14.5px;color:var(--ink-2);margin-top:14px;max-width:26ch}
+.stat-tile .ico{position:absolute;right:22px;top:22px;width:38px;height:38px;border-radius:11px;display:grid;place-items:center;background:var(--paper-3)}
+.stat-tile .ico svg{width:19px;height:19px;stroke:var(--ink);fill:none;stroke-width:1.8}
+.stat-tile.acid{background:var(--acid);border-color:transparent;color:#0A0A0C}
+.stat-tile.acid .cap{color:rgba(10,10,12,.68)}
+.stat-tile.acid .big{font-size:clamp(24px,2.6vw,38px);line-height:1.08;letter-spacing:-.04em}
+.stat-tile.acid.wide{padding:clamp(26px,3vw,44px);min-height:0}
+.stat-tile.acid.wide > div{display:flex;gap:clamp(20px,3.4vw,56px);align-items:flex-end;width:100%}
+.stat-tile.acid.wide .big{flex:1 1 auto;max-width:22ch}
+.stat-tile.acid.wide .cap{flex:0 1 300px;max-width:34ch;margin-top:0}
+@media(max-width:820px){
+  .stat-tile.acid.wide > div{flex-direction:column;align-items:flex-start;gap:16px}
+  .stat-tile.acid.wide .cap{flex:none;max-width:40ch}
+}
+
+/* ============================================================
+   WORK
+   ============================================================ */
+.filters{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:30px}
+.fbtn{
+  padding:9px 17px;border-radius:99px;border:1px solid var(--line);background:transparent;cursor:pointer;
+  font-size:14px;font-weight:500;color:var(--ink-2);transition:all .35s var(--ease);position:relative;overflow:hidden;
+}
+.fbtn .fill{position:absolute;inset:0;background:var(--ink);transform:translateY(101%);transition:transform .5s var(--ease);border-radius:99px}
+.fbtn span{position:relative;z-index:2}
+.fbtn:hover{color:var(--on-ink);border-color:var(--ink)}
+.fbtn:hover .fill{transform:translateY(0)}
+.fbtn.on{color:var(--on-ink);border-color:var(--ink)}
+.fbtn.on .fill{transform:translateY(0)}
+.fbtn .c{font-family:var(--f-mono);font-size:10px;opacity:.6;margin-left:6px;font-style:normal}
+
+.wgrid{display:grid;grid-template-columns:repeat(12,1fr);gap:22px;align-items:start}
+.witem{grid-column:span 4;position:relative;animation:wIn .6s var(--ease) backwards;transition:transform .5s var(--ease)}
+.witem:hover{transform:translateY(-6px)}
+.witem.w3{grid-column:span 3}
+.witem.w6{grid-column:span 6}
+.witem.w8{grid-column:span 8}
+.witem.w9{grid-column:span 9}
+.witem.w12{grid-column:span 12}
+@keyframes wIn{from{opacity:0;transform:translateY(26px) scale(.97)}to{opacity:1;transform:none}}
+@media(max-width:1000px){.witem,.witem.w3,.witem.w6,.witem.w8,.witem.w9,.witem.w12{grid-column:span 6}}
+@media(max-width:700px){.witem,.witem.w3,.witem.w6,.witem.w8,.witem.w9,.witem.w12{grid-column:span 12}}
+
+.wcard{
+  position:relative;display:block;width:100%;padding:0;text-align:left;font:inherit;color:inherit;
+  border-radius:var(--r-l);overflow:hidden;background:var(--paper-3);
+  border:1px solid var(--line-2);box-shadow:var(--sh-1);cursor:pointer;
+  transition:box-shadow .55s var(--ease),border-color .55s var(--ease);
+}
+.wcard:focus-visible{outline:3px solid var(--blue);outline-offset:3px;border-radius:var(--r-l)}
+.wcard:hover{box-shadow:var(--sh-3)}
+.wcard .art{display:block;width:100%;height:auto;transition:transform .85s var(--ease)}
+.wcard:hover .art{transform:scale(1.035)}
+.witem .meta{display:flex;align-items:flex-start;justify-content:space-between;gap:14px;padding:16px 4px 0}
+.witem .meta .t{font-family:var(--f-display);font-weight:700;font-size:16.5px;letter-spacing:-.025em;line-height:1.25;min-width:0}
+.witem .meta .t small{display:block;font-family:var(--f-mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);font-weight:400;margin-top:5px;line-height:1.5}
+.witem .meta .cat{font-family:var(--f-mono);font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);border:1px solid var(--line);padding:5px 10px;border-radius:99px;white-space:nowrap;transition:all .35s;flex:none;margin-top:2px}
+.witem:hover .meta .cat{background:var(--ink);color:var(--on-ink);border-color:var(--ink)}
+.viewbtn{
+  position:absolute;left:50%;top:50%;transform:translate(-50%,-50%) scale(.7);opacity:0;
+  width:62px;height:62px;border-radius:50%;background:var(--paper-2);display:grid;place-items:center;
+  box-shadow:var(--sh-2);transition:opacity .4s var(--ease),transform .5s var(--ease);
+}
+.wcard:hover .viewbtn{opacity:1;transform:translate(-50%,-50%) scale(1)}
+.viewbtn svg{width:20px;height:20px;stroke:var(--ink);fill:none;stroke-width:2}
+
+/* ============================================================
+   LIGHTBOX
+   ============================================================ */
+.lb{position:fixed;inset:0;z-index:9500;background:rgba(8,8,10,.9);backdrop-filter:blur(26px) saturate(140%);-webkit-backdrop-filter:blur(26px);display:flex;align-items:center;justify-content:center;padding:24px;opacity:0;pointer-events:none;transition:opacity .45s var(--ease)}
+.lb.on{opacity:1;pointer-events:auto}
+.lb-box{width:100%;max-width:1080px;background:var(--paper-2);border-radius:var(--r-xl);box-shadow:var(--sh-3);overflow:hidden;transform:scale(.94) translateY(18px);transition:transform .55s var(--ease);max-height:88vh;display:flex;flex-direction:column}
+.lb.on .lb-box{transform:none}
+.lb-art{padding:18px;background:var(--paper-3);display:grid;place-items:center;overflow:auto;flex:1;min-height:0}
+.lb-art svg{max-height:62vh;width:auto;border-radius:12px;box-shadow:0 20px 60px -18px rgba(0,0,0,.72)}
+.lb-info{padding:22px 26px;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:18px;border-top:1px solid var(--line-2)}
+.lb-info .t{font-family:var(--f-display);font-weight:800;font-size:24px;letter-spacing:-.035em}
+.lb-info .d{font-size:14px;color:var(--muted);margin-top:5px;max-width:56ch}
+.lb-info .tags{display:flex;flex-wrap:wrap;gap:7px;margin-top:12px}
+.lb-info .tags .chip{border-color:var(--line);color:var(--ink-2)}
+.lb-nav{display:flex;gap:8px;align-items:center}
+.lb-btn{width:44px;height:44px;border-radius:50%;border:1px solid var(--line);background:var(--paper-2);display:grid;place-items:center;cursor:pointer;transition:all .3s var(--ease)}
+.lb-btn:hover{background:var(--ink);color:var(--on-ink);border-color:var(--ink);transform:scale(1.06)}
+.lb-btn svg{width:18px;height:18px;stroke:currentColor;fill:none;stroke-width:2}
+.lb-close{position:fixed;top:20px;right:20px;z-index:9600;width:48px;height:48px;border-radius:50%;background:var(--paper-3);color:var(--ink);border:1px solid var(--line);display:grid;place-items:center;cursor:pointer;opacity:0;pointer-events:none;transition:opacity .4s,transform .4s var(--ease)}
+.lb-close.on{opacity:1;pointer-events:auto}
+.lb-close:hover{transform:rotate(90deg)}
+
+
+/* ============================================================
+   SERVICES
+   ============================================================ */
+.svc-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+@media(max-width:1000px){.svc-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:620px){.svc-grid{grid-template-columns:1fr}}
+.svc{padding:28px;display:flex;flex-direction:column;min-height:330px;transition:transform .5s var(--ease),box-shadow .5s var(--ease)}
+.svc:hover{transform:translateY(-6px);box-shadow:var(--sh-2)}
+.svc .num{font-family:var(--f-mono);font-size:11px;color:var(--muted);letter-spacing:.12em}
+.svc .ic{width:46px;height:46px;border-radius:13px;display:grid;place-items:center;margin:18px 0 20px;transition:transform .5s var(--ease)}
+.svc:hover .ic{transform:rotate(-8deg) scale(1.06)}
+.svc .ic svg{width:22px;height:22px;fill:none;stroke-width:1.9}
+.svc h3{font-size:22px;letter-spacing:-.035em;margin-bottom:9px}
+.svc p{color:var(--ink-2);font-size:14.5px;line-height:1.5}
+.svc ul{list-style:none;padding:0;margin:18px 0 0;display:flex;flex-direction:column;gap:8px;margin-top:auto;padding-top:18px}
+.svc ul li{font-size:13.5px;color:var(--ink-2);display:flex;gap:9px;align-items:flex-start}
+.svc ul li::before{content:"";width:6px;height:6px;border-radius:99px;background:var(--acid);margin-top:7px;flex:none}
+
+/* ============================================================
+   PROCESS
+   ============================================================ */
+.proc{display:grid;grid-template-columns:repeat(4,1fr);gap:0;border-top:1px solid var(--line)}
+.proc .st{padding:34px 26px 34px 0;border-right:1px solid var(--line);position:relative;transition:background .5s}
+.proc .st:last-child{border-right:0}
+.proc .st .n{font-family:var(--f-mono);font-size:11px;letter-spacing:.16em;color:var(--muted);transition:color .4s}
+.proc .st h3{font-size:clamp(22px,2.4vw,30px);letter-spacing:-.032em;margin:18px 0 12px}
+.proc .st p{color:var(--ink-2);font-size:14.5px;line-height:1.55}
+.proc .st .bar{position:absolute;left:0;top:-1px;height:2px;width:0;background:var(--ink);transition:width .9s var(--ease)}
+.proc .st.done .bar{width:100%}
+.proc .st.done .n{color:var(--acid-deep)}
+.proc .st .mini{margin-top:18px;display:flex;flex-wrap:wrap;gap:6px}
+.proc .st .mini i{font-style:normal;font-family:var(--f-mono);font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;border:1px solid var(--line);padding:4px 9px;border-radius:99px;color:var(--muted)}
+@media(max-width:900px){.proc{grid-template-columns:repeat(2,1fr)}.proc .st:nth-child(2n){border-right:0}.proc .st:nth-child(-n+2){border-bottom:1px solid var(--line)}}
+@media(max-width:560px){.proc{grid-template-columns:1fr}.proc .st{border-right:0!important;border-bottom:1px solid var(--line)}}
+
+/* ============================================================
+   TESTIMONIALS
+   ============================================================ */
+.tst-row{display:flex;gap:20px;overflow-x:auto;scroll-snap-type:x mandatory;padding:6px 0 26px;margin:0 -4px;scrollbar-width:none}
+.tst-row::-webkit-scrollbar{display:none}
+.tst{flex:0 0 min(420px,84vw);scroll-snap-align:start;padding:30px;border-radius:var(--r-l);background:var(--paper-2);border:1px solid var(--line-2);box-shadow:var(--sh-1);display:flex;flex-direction:column;gap:18px;transition:transform .5s var(--ease),box-shadow .5s var(--ease)}
+.tst:hover{transform:translateY(-5px);box-shadow:var(--sh-2)}
+.tst .quote{font-family:var(--f-display);font-size:19px;font-weight:600;letter-spacing:-.022em;line-height:1.35}
+.tst .who{display:flex;align-items:center;gap:12px;margin-top:auto;padding-top:18px;border-top:1px solid var(--line-2)}
+.tst .who .av{width:42px;height:42px;border-radius:12px;display:grid;place-items:center;font-family:var(--f-display);font-weight:800;font-size:15px;flex:none;letter-spacing:-.03em;color:#0A0A0C}
+.tst .who .av.lt{color:#fff}
+.tst .who .nm{font-weight:600;font-size:15px}
+.tst .who .rl{font-family:var(--f-mono);font-size:10.5px;letter-spacing:.11em;text-transform:uppercase;color:var(--muted)}
+.tst .stars{display:flex;gap:3px}
+.tst .stars svg{width:14px;height:14px;fill:var(--acid-deep);stroke:var(--acid-deep)}
+
+/* ============================================================
+   CONTACT
+   ============================================================ */
+.ct-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:22px;align-items:stretch}
+@media(max-width:1000px){.ct-grid{grid-template-columns:1fr}}
+.ct-hero{background:var(--panel);color:var(--ink);border:1px solid var(--line);border-radius:var(--r-xl);padding:clamp(30px,4vw,58px);position:relative;overflow:hidden;box-shadow:var(--sh-3);display:flex;flex-direction:column}
+.ct-hero .glow{position:absolute;width:420px;height:420px;border-radius:50%;filter:blur(80px);opacity:.45;background:radial-gradient(circle,var(--acid),transparent 70%);left:-120px;bottom:-160px;pointer-events:none}
+.ct-hero h2{font-size:clamp(34px,5.4vw,68px);letter-spacing:-.042em;line-height:.98;position:relative}
+.ct-hero h2 em{font-style:italic;font-weight:400;color:var(--acid)}
+.ct-hero p{color:rgba(255,255,255,.66);font-size:16.5px;max-width:40ch;margin-top:20px;position:relative}
+.ct-btns{display:flex;flex-wrap:wrap;gap:12px;margin-top:34px;margin-bottom:36px;position:relative}
+.ct-btns .btn{border-color:rgba(255,255,255,.2);color:#fff;background:transparent}
+.ct-btns .btn .fill{background:#fff}
+.ct-btns .btn:hover{color:#000}
+.ct-btns .btn.wtf .fill{background:var(--acid)}
+.ct-btns .btn.wtf:hover{color:#000}
+.ct-btns .btn svg{stroke:currentColor;fill:none}
+.ct-meta{display:flex;flex-wrap:wrap;gap:26px;margin-top:auto;padding-top:26px;border-top:1px solid rgba(255,255,255,.14);position:relative}
+.ct-meta div{font-size:13px;color:rgba(255,255,255,.5)}
+.ct-meta b{display:block;color:#fff;font-size:15px;font-weight:600;margin-top:4px}
+
+.brief{padding:clamp(24px,3vw,34px)}
+.brief h3{font-size:24px;letter-spacing:-.032em;margin-bottom:6px}
+.brief .hint{font-size:14px;color:var(--muted);margin-bottom:22px}
+.chipset{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:20px}
+.bchip{padding:9px 15px;border-radius:99px;border:1px solid var(--line);background:transparent;cursor:pointer;font-size:13.5px;transition:all .3s var(--ease);color:var(--ink-2)}
+.bchip:hover{border-color:var(--ink);color:var(--ink);transform:translateY(-2px)}
+.bchip.on{background:var(--ink);color:var(--on-ink);border-color:var(--ink)}
+.brief .fl{font-family:var(--f-mono);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin:18px 0 10px}
+.brief pre{
+  background:var(--paper);border:1px solid var(--line-2);border-radius:14px;padding:16px;font-family:var(--f-mono);
+  font-size:12.5px;line-height:1.65;white-space:pre-wrap;word-break:break-word;color:var(--ink-2);margin:0 0 18px;max-height:262px;overflow:auto;
+}
+.brief .row{display:flex;flex-wrap:wrap;gap:10px}
+.brief .row .btn{flex:1 1 160px;min-width:160px;justify-content:center}
+
+/* ============================================================
+   FOOTER
+   ============================================================ */
+.ftr{background:var(--panel);color:var(--ink);border-top:1px solid var(--line);padding:clamp(60px,8vw,110px) 0 34px;position:relative;overflow:hidden}
+.ftr .fmark{position:absolute;left:50%;bottom:-6%;transform:translateX(-50%);font-family:var(--f-display);font-weight:800;font-size:clamp(90px,24vw,340px);letter-spacing:-.06em;color:rgba(255,255,255,.045);white-space:nowrap;pointer-events:none;line-height:.8}
+.ftr-top{display:grid;grid-template-columns:1.2fr 1fr 1fr;gap:40px;position:relative;z-index:2;padding-bottom:54px}
+@media(max-width:900px){.ftr-top{grid-template-columns:1fr;gap:34px}}
+.ftr h4{font-family:var(--f-mono);font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.58);margin-bottom:16px;font-weight:400}
+.ftr .fbrand{display:flex;align-items:center;gap:12px;margin-bottom:16px}
+.ftr .fbrand .m{width:38px;height:38px;border-radius:11px;background:var(--acid);display:grid;place-items:center}
+.ftr .fbrand .m svg{width:21px;height:21px}
+.ftr .fbrand .t{font-family:var(--f-display);font-weight:800;font-size:19px;letter-spacing:-.035em}
+.ftr .fbrand .t small{display:block;font-family:var(--f-mono);font-size:9px;letter-spacing:.2em;color:rgba(255,255,255,.58);font-weight:400;margin-top:-2px}
+.ftr p{color:rgba(255,255,255,.6);font-size:15px;max-width:34ch}
+.ftr .fl{display:flex;flex-direction:column;gap:11px}
+.ftr .fl a{color:rgba(255,255,255,.7);font-size:15px;transition:color .3s,transform .35s var(--ease);width:fit-content}
+.ftr .fl a:hover{color:var(--acid);transform:translateX(4px)}
+.ftr .soc{display:flex;gap:10px;margin-top:22px}
+.ftr .soc a{width:42px;height:42px;border-radius:12px;border:1px solid rgba(255,255,255,.16);display:grid;place-items:center;transition:all .35s var(--ease)}
+.ftr .soc a:hover{background:var(--acid);border-color:var(--acid);transform:translateY(-3px)}
+.ftr .soc a:hover svg{stroke:var(--acid)}
+.ftr .soc svg{width:19px;height:19px;fill:none;stroke:#fff;stroke-width:1.8;transition:stroke .3s}
+.ftr-bot{display:flex;flex-wrap:wrap;gap:16px;justify-content:space-between;align-items:center;padding-top:26px;border-top:1px solid rgba(255,255,255,.12);position:relative;z-index:2;font-family:var(--f-mono);font-size:11px;letter-spacing:.08em;color:rgba(255,255,255,.58)}
+.ftr-bot .r{display:flex;gap:18px;flex-wrap:wrap}
+.ftr-bot a:hover{color:var(--acid)}
+
+/* toast */
+.toast{position:fixed;left:50%;bottom:28px;transform:translate(-50%,140%);z-index:9800;background:var(--ink);color:var(--on-ink);padding:14px 20px;border-radius:99px;font-size:14px;box-shadow:var(--sh-3);display:flex;align-items:center;gap:10px;transition:transform .6s var(--ease);max-width:calc(100% - 32px)}
+.toast.on{transform:translate(-50%,0)}
+.toast .ic{width:18px;height:18px;border-radius:99px;background:var(--acid);display:grid;place-items:center;font-size:11px;color:#000;font-weight:700;flex:none}
+
+/* reveal */
+.rv{opacity:0;transform:translateY(26px);transition:opacity .9s var(--ease),transform .9s var(--ease)}
+.rv.in{opacity:1;transform:none}
+.rv.d1{transition-delay:.08s}.rv.d2{transition-delay:.16s}.rv.d3{transition-delay:.24s}
+.rv.d4{transition-delay:.32s}.rv.d5{transition-delay:.4s}
+
+@media (prefers-reduced-motion:reduce){
+  *{animation-duration:.01ms!important;transition-duration:.01ms!important;scroll-behavior:auto!important}
+  .rv{opacity:1;transform:none}
+}
+
+/* ============================================================
+   ACCESSIBILITY · RESUME · TOOLKIT · POLISH
+   ============================================================ */
+.skip{position:fixed;top:12px;left:12px;z-index:9999;transform:translateY(-180%);
+  background:var(--ink);color:var(--on-ink);padding:13px 20px;border-radius:14px;font-size:14px;font-weight:600;
+  text-decoration:none;transition:transform .35s var(--ease);box-shadow:var(--sh-2)}
+.skip:focus{transform:none}
+:focus-visible{outline:3px solid var(--blue);outline-offset:3px;border-radius:8px}
+main:focus{outline:none}
+.fbtn:focus-visible,.bchip:focus-visible{outline-offset:2px}
+
+/* header resume */
+.hdr-cv{padding:11px 18px;font-size:14.5px;font-weight:500}
+@media(max-width:1180px){.hdr-cv{display:none}}
+
+/* work filter bar */
+.filters-bar{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-bottom:30px}
+.filters-bar .filters{margin-bottom:0}
+.wcount{font-family:var(--f-mono);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);white-space:nowrap;margin:0}
+@media(max-width:700px){.filters-bar{align-items:flex-start;flex-direction:column;gap:12px}}
+
+/* service card CTA */
+.card-cta{display:inline-flex;align-items:center;gap:8px;margin-top:18px;font-family:var(--f-mono);
+  font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink);text-decoration:none;
+  border-bottom:1.5px solid var(--line);padding-bottom:5px;transition:gap .35s var(--ease),border-color .35s}
+.card-cta span{transition:transform .35s var(--ease)}
+.card-cta:hover{gap:13px;border-color:var(--ink)}
+.card-cta:hover span{transform:translateX(3px)}
+.card:hover .card-cta{border-color:var(--ink)}
+
+/* mobile menu + footer resume */
+.m-cv{background:none;border:0;padding:0;cursor:pointer;font-family:var(--f-mono);font-size:12px;
+  letter-spacing:.12em;text-transform:uppercase;color:var(--ink);display:inline-flex;gap:7px;align-items:center}
+.m-cv:hover{color:var(--blue)}
+.ftr .fl .f-cv{background:none;border:0;padding:0;cursor:pointer;font:inherit;font-size:15px;
+  color:rgba(255,255,255,.7);text-align:left;width:fit-content;transition:color .3s,transform .35s var(--ease)}
+.ftr .fl .f-cv:hover{color:var(--acid);transform:translateX(4px)}
+.f-cv:hover{color:var(--ink)}
+
+/* ================= RESUME / CV ================= */
+.cv-box{max-width:980px;height:auto;max-height:92vh}
+.cv-scroll{overflow:auto;overscroll-behavior:contain;padding:38px 40px 30px;max-height:92vh}
+.cv-scroll::-webkit-scrollbar{width:10px}
+.cv-scroll::-webkit-scrollbar-thumb{background:var(--line);border-radius:99px;border:3px solid var(--paper-2)}
+.cv-head{display:flex;justify-content:space-between;gap:34px;flex-wrap:wrap;align-items:flex-start;
+  padding-bottom:22px;border-bottom:1.5px solid var(--ink)}
+.cv-k{font-family:var(--f-mono);font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);margin-bottom:12px}
+.cv-head h2{font-family:var(--f-display);font-weight:800;font-size:54px;line-height:.94;letter-spacing:-.045em;margin:0 0 8px}
+.cv-role{font-size:15px;color:var(--ink-2);max-width:42ch;line-height:1.5}
+.cv-contact{display:flex;flex-direction:column;gap:7px;font-family:var(--f-mono);font-size:12px;letter-spacing:.04em;text-align:right}
+.cv-contact a{color:var(--ink);text-decoration:none;border-bottom:1px solid var(--line);padding-bottom:2px;transition:border-color .3s,color .3s}
+.cv-contact a:hover{color:var(--blue);border-color:var(--blue)}
+.cv-av{color:var(--muted)}
+.cv-grid{display:grid;grid-template-columns:1.35fr .95fr;gap:40px;padding:26px 0 22px}
+.cv-grid h3{font-family:var(--f-mono);font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);
+  margin:0 0 14px;padding-bottom:9px;border-bottom:1px solid var(--line)}
+.cv-grid h3:not(:first-child){margin-top:30px}
+.cv-job{display:grid;grid-template-columns:120px 1fr;gap:18px;margin-bottom:22px}
+.cv-when{font-family:var(--f-mono);font-size:11px;letter-spacing:.08em;color:var(--muted);padding-top:4px}
+.cv-what b{display:block;font-family:var(--f-display);font-weight:700;font-size:17.5px;letter-spacing:-.02em;line-height:1.3}
+.cv-what span{display:block;font-family:var(--f-mono);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin:4px 0 8px}
+.cv-what p{margin:0;font-size:14.5px;line-height:1.6;color:var(--ink-2)}
+.cv-list{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:11px}
+.cv-list li{position:relative;padding-left:20px;font-size:14.5px;line-height:1.55;color:var(--ink-2)}
+.cv-list li::before{content:"";position:absolute;left:0;top:.62em;width:8px;height:2px;background:var(--acid-deep)}
+.cv-list li b{color:var(--ink);font-weight:600}
+.cv-list.sm li{font-size:13.5px;padding-left:16px}
+.cv-list.sm li::before{background:var(--line);width:6px}
+.cv-tags{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:7px}
+.cv-tags li{font-family:var(--f-mono);font-size:11px;letter-spacing:.06em;border:1px solid var(--line);
+  border-radius:99px;padding:6px 11px;color:var(--ink-2)}
+.cv-tags.sm li{font-size:10.5px;padding:5px 10px}
+.cv-note{margin:0;font-size:13.5px;line-height:1.6;color:var(--ink-2)}
+.cv-foot{display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap;
+  padding-top:20px;border-top:1px solid var(--line)}
+.cv-foot span{font-size:13.5px;color:var(--muted)}
+.cv-foot .btn{padding:12px 22px;font-size:14px}
+@media(max-width:820px){
+  .cv-scroll{padding:28px 22px 24px}
+  .cv-head h2{font-size:42px}
+  .cv-grid{grid-template-columns:1fr;gap:26px}
+  .cv-job{grid-template-columns:1fr;gap:6px}
+  .cv-contact{text-align:left}
+}
+
+/* ================= REDUCED MOTION ================= */
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}
+  .rv{opacity:1;transform:none}
+  .mq-row{animation:none!important}
+}
+
+/* ================= PRINT (resume) ================= */
+@media print{
+  body{background:#fff}
+  #cv{--paper:#fff;--paper-2:#fff;--paper-3:#F2F2EE;--ink:#0A0A0C;--ink-2:#3A3A42;--muted:#6E6E7A;
+      --line:rgba(10,10,12,.16);--line-2:rgba(10,10,12,.08);--panel:#fff;--on-ink:#fff;color:#0A0A0C}
+  body>*:not(#cv){display:none!important}
+  #cv{display:block!important;position:static;inset:auto;background:#fff;padding:0;opacity:1;pointer-events:auto}
+  #cv .lb-box{box-shadow:none;border-radius:0;max-width:none;max-height:none;height:auto;display:block}
+  #cv .cv-scroll{overflow:visible;max-height:none;padding:0}
+  #cv .lb-close,#cvPrint{display:none!important}
+  .cv-head{padding-bottom:18px}
+  .cv-head h2{font-size:46px}
+  .cv-grid{padding:20px 0 16px;gap:28px}
+  .cv-grid h3{margin-bottom:11px}
+  .cv-what p,.cv-list li{font-size:13px;line-height:1.52}
+  .cv-list{gap:9px}
+  .cv-foot{padding-top:16px}
+  @page{margin:13mm}
+}
+</style>
+</head>
+<body>
+<a class="skip" href="#top">Skip to content</a>
+<div class="prog" id="prog"></div>
+
+<!-- ============ SHARED SVG DEFS ============ -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+<defs>
+  <linearGradient id="gChrome" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0" stop-color="#ffffff"/><stop offset=".38" stop-color="#c8ced9"/>
+    <stop offset=".5" stop-color="#f2f5fa"/><stop offset=".52" stop-color="#8f97a5"/>
+    <stop offset="1" stop-color="#ffffff"/>
+  </linearGradient>
+  <linearGradient id="gAcid" x1="0" y1="0" x2="1" y2="1">
+    <stop offset="0" stop-color="#E4FF6B"/><stop offset="1" stop-color="#A9E800"/>
+  </linearGradient>
+  <linearGradient id="gViolet" x1="0" y1="0" x2="1" y2="1">
+    <stop offset="0" stop-color="#B79CFF"/><stop offset="1" stop-color="#6C3BFF"/>
+  </linearGradient>
+  <linearGradient id="gBlue" x1="0" y1="0" x2="1" y2="1">
+    <stop offset="0" stop-color="#5C7BFF"/><stop offset="1" stop-color="#1430D8"/>
+  </linearGradient>
+  <linearGradient id="gCoral" x1="0" y1="0" x2="1" y2="1">
+    <stop offset="0" stop-color="#FF8266"/><stop offset="1" stop-color="#E8320F"/>
+  </linearGradient>
+  <linearGradient id="gMint" x1="0" y1="0" x2="1" y2="1">
+    <stop offset="0" stop-color="#7CFFD4"/><stop offset="1" stop-color="#00C089"/>
+  </linearGradient>
+  <radialGradient id="gSun" cx=".5" cy=".5" r=".5">
+    <stop offset="0" stop-color="#FFE98A"/><stop offset=".55" stop-color="#FF7A3D"/><stop offset="1" stop-color="#8B1B00"/>
+  </radialGradient>
+  <radialGradient id="gVig" cx=".5" cy=".45" r=".72">
+    <stop offset=".45" stop-color="#000" stop-opacity="0"/><stop offset="1" stop-color="#000" stop-opacity=".72"/>
+  </radialGradient>
+  <filter id="fGrain" x="0" y="0" width="100%" height="100%">
+    <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="3" stitchTiles="stitch"/>
+    <feColorMatrix type="saturate" values="0"/>
+    <feComponentTransfer><feFuncA type="linear" slope=".22"/></feComponentTransfer>
+  </filter>
+  <filter id="fSoft" x="-30%" y="-30%" width="160%" height="160%">
+    <feGaussianBlur stdDeviation="22"/>
+  </filter>
+  <filter id="fShadow" x="-40%" y="-40%" width="180%" height="180%">
+    <feDropShadow dx="0" dy="10" stdDeviation="12" flood-color="#000" flood-opacity=".35"/>
+  </filter>
+  <pattern id="pDots" width="9" height="9" patternUnits="userSpaceOnUse">
+    <circle cx="2" cy="2" r="1.5" fill="#000" opacity=".5"/>
+  </pattern>
+  <pattern id="pGrid" width="40" height="40" patternUnits="userSpaceOnUse">
+    <path d="M40 0H0v40" fill="none" stroke="#fff" stroke-opacity=".1" stroke-width="1"/>
+  </pattern>
+</defs>
+</svg>
+
+<!-- ============ HEADER ============ -->
+<header class="hdr" id="hdr">
+  <div class="hdr-in">
+    <a href="#top" class="brand">
+      <span class="brand-mark">
+        <svg viewBox="0 0 24 24" fill="none"><path d="M12 2v20M2 12h20M5 5l14 14M19 5L5 19" stroke="#CCFF2E" stroke-width="2.4" stroke-linecap="round"/></svg>
+      </span>
+      <span>DzynsBySoham<small>DESIGNS BY SOHAM</small></span>
+    </a>
+
+    <nav class="nav-pill" id="navPill">
+      <a href="#work" data-nav><span class="pip"></span>Work</a>
+      <a href="#studio" data-nav><span class="pip"></span>Studio</a>
+      <a href="#services" data-nav><span class="pip"></span>Services</a>
+      <a href="#process" data-nav><span class="pip"></span>Process</a>
+      <a href="#contact" data-nav><span class="pip"></span>Contact</a>
+    </nav>
+
+    <div class="hdr-cta">
+      <button class="btn hdr-cv" id="cvOpen" type="button"><span class="fill"></span><span class="lbl">Résumé</span></button>
+      <a class="btn btn-dark" href="#contact">
+        <span class="fill"></span>
+        <span class="lbl"><span class="t">Hire me</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M5 12h14M13 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </span>
+      </a>
+      <a class="btn btn-dark hdr-wa" href="https://wa.me/918329014831" target="_blank" rel="noopener" aria-label="Chat on WhatsApp">
+        <span class="fill"></span>
+        <span class="lbl"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M20 11.8a8 8 0 0 1-11.9 7L4 20l1.2-4A8 8 0 1 1 20 11.8z" stroke-linejoin="round"/></svg></span>
+      </a>
+      <button class="burger" id="burger" aria-label="Open menu" aria-expanded="false" aria-controls="mmenu"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</header>
+
+<!-- ============ MOBILE MENU ============ -->
+<div class="mmenu" id="mmenu">
+  <a href="#work" class="m-link m-close"><span>Work <i>01</i></span></a>
+  <a href="#studio" class="m-link m-close"><span>Studio <i>02</i></span></a>
+  <a href="#services" class="m-link m-close"><span>Services <i>03</i></span></a>
+  <a href="#process" class="m-link m-close"><span>Process <i>04</i></span></a>
+  <a href="#contact" class="m-link m-close"><span>Contact <i>05</i></span></a>
+  <div class="mmenu-foot">
+    <div style="font-family:var(--f-mono);font-size:12px;color:var(--muted);letter-spacing:.1em">BASED IN MUMBAI · WORKING WORLDWIDE</div>
+    <button class="m-cv" id="cvOpenM" type="button">Résumé <span>↗</span></button>
+    <a class="btn btn-dark" href="https://wa.me/918329014831" target="_blank" rel="noopener">
+      <span class="fill"></span>
+      <span class="lbl">WhatsApp</span>
+    </a>
+  </div>
+</div>
+
+<main id="top" tabindex="-1">
+
+<!-- ============ HERO ============ -->
+<section class="hero">
+  <div class="hero-bg">
+    <div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div>
+    <div class="grid-lines"></div>
+  </div>
+
+  <div class="sticker st-badge sticker-rot" style="--rot:-11deg">
+    5+ YEARS<span>IN THE SCENE</span>
+  </div>
+
+  <div class="sticker st-note">
+    <b>Currently on</b>
+    Designing the mainstream <strong>DHH / IHH</strong> thumbnail scene for Indian hip-hop on YouTube.
+  </div>
+
+  <div class="sticker st-note2">
+    <b>Selected work</b>
+    <div class="row"><span class="av">EB</span> Emiway Bantai</div>
+    <div class="row"><span class="av">✦</span> 40+ Indian artists</div>
+    <div class="row"><span class="av">▶</span> 400+ thumbnails</div>
+  </div>
+
+  <svg class="sticker st-arrow" viewBox="0 0 120 90" fill="none" style="--rot:6deg">
+    <path d="M6 8c26 3 58 16 74 36" stroke="#0A0A0C" stroke-width="2.4" stroke-linecap="round" stroke-dasharray="1 7"/>
+    <path d="M64 40l18 6 4-19" stroke="#0A0A0C" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+  </svg>
+
+  <div class="wrap">
+    <div class="hero-in">
+
+      <h1 class="hero-h1">DzynsBySoham</h1>
+
+      <p class="hero-sub">
+        <b>Thumbnails, posters and typographic artwork</b> for the Indian hip-hop scene.
+        Worked with <b>Emiway Bantai</b> — now carrying the mainstream <b>DHH / IHH thumbnail scene</b>.
+      </p>
+
+      <div class="hero-cta">
+        <a href="#work" class="btn btn-dark btn-lg">
+          <span class="fill"></span>
+          <span class="lbl">See the work
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M5 12h14M13 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </span>
+        </a>
+        <a href="https://instagram.com/dzynsbysoham" target="_blank" rel="noopener" class="btn btn-lg">
+          <span class="fill"></span>
+          <span class="lbl">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+            DM on Instagram
+          </span>
+        </a>
+      </div>
+      <a class="hero-note" href="#work">Scroll — the studio is open ↓</a>
+    </div>
+
+    <div class="hstats">
+      <div class="hs"><div class="n"><span class="count" data-to="5">0</span><sup>+</sup></div><div class="l">Years designing</div></div>
+      <div class="hs"><div class="n"><span class="count" data-to="400">0</span><sup>+</sup></div><div class="l">Thumbnails shipped</div></div>
+      <div class="hs"><div class="n"><span class="count" data-to="40">0</span><sup>+</sup></div><div class="l">Artists worked with</div></div>
+      <div class="hs"><div class="n"><span class="count" data-to="3">0</span><sup>M</sup></div><div class="l">Avg. views per thumb</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ MARQUEE ============ -->
+<div class="mq" aria-hidden="true">
+  <div class="mq-row" id="mqRow"></div>
+</div>
+
+<!-- ============ SCENE STRIP ============ -->
+<div class="scene-strip" aria-hidden="true">
+  <div class="mq-row rev" id="sceneRow"></div>
+</div>
+
+<!-- ============ STUDIO / ABOUT ============ -->
+<section class="sec" id="studio">
+  <div class="wrap">
+    <div class="sec-head">
+      <div>
+        <div class="eyebrow"><span class="dot"></span>01 — The Studio</div>
+        <h2 class="h-sec rv">Design that <span class="it">screams</span> in 16:9.</h2>
+      </div>
+      <p class="lede rv d2">Thumbnails aren't posters. They're a fight for one second of your attention — and I build them like it.</p>
+    </div>
+
+    <div class="bento">
+      <div class="card b-7 about-card rv">
+        <h3>I'm Soham. I make rap look expensive.</h3>
+        <p>Five years ago I started cutting type for desi hip-hop flyers and mixtape covers. Today I run a full design practice for artists, labels and creators across India.</p>
+        <p>Heavy Grotesque typography, brutal colour, one strict rule — <i>if it doesn't read in half a second at phone size, it doesn't ship.</i></p>
+        <div class="sig">
+          <span class="mark">
+            <svg viewBox="0 0 24 24" fill="none"><path d="M12 2v20M2 12h20M5 5l14 14M19 5L5 19" stroke="#CCFF2E" stroke-width="2.4" stroke-linecap="round"/></svg>
+          </span>
+          <span>
+            <span class="nm">Soham</span>
+            <span class="rl">Founder &amp; Lead Designer — DzynsBySoham</span>
+          </span>
+        </div>
+      </div>
+
+      <div class="card b-5 feature-card rv d1">
+        <div class="glow"></div>
+        <div>
+          <div class="tag">● Headline credit</div>
+          <h3>Worked with<br>Emiway Bantai</h3>
+          <p>Official artwork for India's biggest independent rapper — singles, album visuals, tour posters and a thumbnail system built to stay consistent across hundreds of uploads.</p>
+        </div>
+        <div class="chiprow">
+          <span class="chip">Album Art</span><span class="chip">Tour Posters</span>
+          <span class="chip">Thumbnail System</span><span class="chip">Merch</span>
+        </div>
+      </div>
+
+      <div class="card b-4 stat-tile rv d2">
+        <span class="ico"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="14" rx="2"/><path d="M10 9l5 3-5 3z" fill="#0A0A0C" stroke="none"/></svg></span>
+        <div>
+          <div class="big"><span class="count" data-to="400">0</span><sup>+</sup></div>
+          <div class="cap">Thumbnails designed &amp; shipped across YouTube, Instagram Reels and Shorts.</div>
+        </div>
+      </div>
+
+      <div class="card b-4 stat-tile rv d2">
+        <span class="ico"><svg viewBox="0 0 24 24"><path d="M4 19V7l8-4 8 4v12"/><path d="M9 19v-6h6v6"/></svg></span>
+        <div>
+          <div class="big"><span class="count" data-to="120">0</span><sup>+</sup></div>
+          <div class="cap">Posters, flyers, covers and typographic systems delivered to artists &amp; brands.</div>
+        </div>
+      </div>
+
+      <div class="card b-4 stat-tile rv d3">
+        <span class="ico"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></span>
+        <div>
+          <div class="big"><span class="count" data-to="24">0</span><sup>h</sup></div>
+          <div class="cap">Average turnaround on a single thumbnail pack — usually faster.</div>
+        </div>
+      </div>
+
+      <div class="card b-12 stat-tile acid wide rv d2">
+        <div>
+          <div class="big">Now carrying the whole<br>mainstream <span style="font-style:italic;font-weight:400">DHH / IHH</span> thumbnail scene.</div>
+          <div class="cap">Designing thumbnails for mainstream Indian hip-hop creators on YouTube — one consistent visual language across the whole roster.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ WORK ============ -->
+<section class="sec" id="work" style="padding-top:0">
+  <div class="wrap">
+    <div class="sec-head">
+      <div>
+        <div class="eyebrow"><span class="dot"></span>02 — Selected Work</div>
+        <h2 class="h-sec rv">Eight disciplines. <span class="it">One</span> consistent eye.</h2>
+      </div>
+      <p class="lede rv d2">Thumbnails, posters, cover art, artist identity, social systems, editorial, packaging and type. Every piece original. Open any piece full screen.</p>
+    </div>
+
+    <div class="filters-bar rv">
+      <div class="filters" id="filters" role="group" aria-label="Filter work by discipline"></div>
+      <p class="wcount" id="wCount" aria-live="polite">22 pieces</p>
+    </div>
+    <div class="wgrid" id="wgrid"></div>
+  </div>
+</section>
+
+
+<!-- ============ SERVICES ============ -->
+<section class="sec" id="services" style="padding-top:0">
+  <div class="wrap">
+    <div class="sec-head">
+      <div>
+        <div class="eyebrow"><span class="dot"></span>03 — Services</div>
+        <h2 class="h-sec rv">What I <span class="it">actually</span> do.</h2>
+      </div>
+      <p class="lede rv d2">Four ways to work together. Every one ends with files you can post tonight.</p>
+    </div>
+
+    <div class="svc-grid">
+      <div class="card svc rv">
+        <span class="num">/ 01</span>
+        <span class="ic" style="background:var(--acid)"><svg viewBox="0 0 24 24" stroke="#0A0A0C"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M10 9.5l5 2.5-5 2.5z" fill="#0A0A0C" stroke="none"/></svg></span>
+        <h3>Thumbnail Packs</h3>
+        <p>High-CTR YouTube thumbnails on a repeatable system — every upload looks like the same artist.</p>
+        <ul><li>3–10 concepts per pack</li><li>Copy + hook suggestions</li><li>Editable PSD / Figma / Canva</li></ul>
+        <a class="card-cta" href="#contact">Start a thumbnail pack <span>→</span></a>
+      </div>
+      <div class="card svc rv d1">
+        <span class="num">/ 02</span>
+        <span class="ic" style="background:var(--blue)"><svg viewBox="0 0 24 24" stroke="#fff"><path d="M6 3h12v18H6z"/><path d="M9 8h6M9 12h6M9 16h4"/></svg></span>
+        <h3>Posters &amp; Flyers</h3>
+        <p>Print-ready artwork for rap nights, mixtape drops and tour announcements — A4, A3, square and story sizes.</p>
+        <ul><li>Print + digital sizes</li><li>Custom lettering</li><li>Same-day revisions</li></ul>
+        <a class="card-cta" href="#contact">Book a poster <span>→</span></a>
+      </div>
+      <div class="card svc rv d2">
+        <span class="num">/ 03</span>
+        <span class="ic" style="background:var(--coral)"><svg viewBox="0 0 24 24" stroke="#fff"><path d="M4 20L12 4l8 16H4z"/><path d="M9 20l3-6 3 6"/></svg></span>
+        <h3>Album &amp; Cover Art</h3>
+        <p>Singles, EPs, mixtapes and visual identity — a world for the project, not one-off decoration.</p>
+        <ul><li>Cover + rollout set</li><li>Palette &amp; type system</li><li>Social media kit</li></ul>
+        <a class="card-cta" href="#contact">Book cover art <span>→</span></a>
+      </div>
+      <div class="card svc rv d3">
+        <span class="num">/ 04</span>
+        <span class="ic" style="background:var(--violet)"><svg viewBox="0 0 24 24" stroke="#fff"><path d="M12 3l2.6 5.6L20 9.3l-4 4 1 6-5-2.8L7 19.3l1-6-4-4 5.4-.7z"/></svg></span>
+        <h3>Artist Identity</h3>
+        <p>Logo, wordmark, type palette and a mini brand guide — consistent everywhere the artist shows up.</p>
+        <ul><li>Logo &amp; wordmark</li><li>Brand mini-guide PDF</li><li>Full handover files</li></ul>
+        <a class="card-cta" href="#contact">Build an identity <span>→</span></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PROCESS ============ -->
+<section class="sec" id="process" style="padding-top:0">
+  <div class="wrap">
+    <div class="sec-head">
+      <div>
+        <div class="eyebrow"><span class="dot"></span>04 — How it works</div>
+        <h2 class="h-sec rv">Four steps. <span class="it">No</span> mystery.</h2>
+      </div>
+      <p class="lede rv d2">A tight pipeline built over 5 years and a few hundred deadlines.</p>
+    </div>
+
+    <div class="proc" id="proc">
+      <div class="st"><span class="bar"></span><span class="n">STEP 01</span><h3>Brief</h3><p>Artist, song, vibe, drop date. A WhatsApp voice note is enough.</p><div class="mini"><i>WhatsApp</i><i>DM</i><i>10 min</i></div></div>
+      <div class="st"><span class="bar"></span><span class="n">STEP 02</span><h3>Direction</h3><p>2–3 art directions with mood, colour and type locked in — we agree before pixels.</p><div class="mini"><i>Moodboard</i><i>Type scale</i><i>Palette</i></div></div>
+      <div class="st"><span class="bar"></span><span class="n">STEP 03</span><h3>Design</h3><p>Full artwork in every size you need — thumbnail, poster, story, square — plus editable source.</p><div class="mini"><i>PSD</i><i>Figma</i><i>Canva</i></div></div>
+      <div class="st"><span class="bar"></span><span class="n">STEP 04</span><h3>Refine &amp; Ship</h3><p>Two revision rounds included, final exports handed over, next drop already scheduled.</p><div class="mini"><i>2 rounds</i><i>24h</i><i>Export pack</i></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TESTIMONIALS ============ -->
+<section class="sec" style="padding-top:0">
+  <div class="wrap">
+    <div class="sec-head">
+      <div>
+        <div class="eyebrow"><span class="dot"></span>05 — Words</div>
+        <h2 class="h-sec rv">What the <span class="it">artists</span> say.</h2>
+      </div>
+      <p class="lede rv d2">Artists, managers and the people who pay the bills.</p>
+    </div>
+  </div>
+  <div class="wrap">
+    <div class="tst-row" id="tstRow"></div>
+  </div>
+</section>
+
+<!-- ============ CONTACT ============ -->
+<section class="sec" id="contact" style="padding-top:0">
+  <div class="wrap">
+    <div class="ct-grid">
+      <div class="ct-hero rv">
+        <div class="glow"></div>
+        <div class="eyebrow" style="color:rgba(255,255,255,.45)"><span class="dot"></span>06 — Let's talk</div>
+        <h2>Let's make something <em>loud.</em></h2>
+        <p>Drop your song, your date and your idea. I'll reply with a plan, a price and a timeline — usually the same day.</p>
+        <div class="ct-btns">
+          <a class="btn btn-acid wtf btn-lg" href="https://wa.me/918329014831" target="_blank" rel="noopener">
+            <span class="fill"></span>
+            <span class="lbl">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M20 11.8a8 8 0 0 1-11.9 7L4 20l1.2-4A8 8 0 1 1 20 11.8z" stroke-linejoin="round"/></svg>
+              WhatsApp 83290 14831
+            </span>
+          </a>
+          <a class="btn btn-lg" href="https://instagram.com/dzynsbysoham" target="_blank" rel="noopener">
+            <span class="fill"></span>
+            <span class="lbl">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+              @dzynsbysoham
+            </span>
+          </a>
+        </div>
+        <div class="ct-meta">
+          <div>Response time<b>Under 6 hours</b></div>
+          <div>Based in<b>Mumbai, India</b></div>
+          <div>Working with<b>Artists worldwide</b></div>
+        </div>
+      </div>
+
+      <div class="card brief rv d1">
+        <h3>Build your brief</h3>
+        <div class="hint">Pick what's closest — I'll pre-fill a message you can send in one tap.</div>
+        <div class="fl">Service</div>
+        <div class="chipset" id="bService"></div>
+        <div class="fl">Timeline</div>
+        <div class="chipset" id="bTime"></div>
+        <div class="fl">Budget band</div>
+        <div class="chipset" id="bBudget"></div>
+        <pre id="bPreview">Hi Soham! I need a thumbnail pack for my new single. Can we talk?</pre>
+        <div class="row">
+          <a class="btn btn-dark" id="bWa" href="https://wa.me/918329014831" target="_blank" rel="noopener">
+            <span class="fill"></span><span class="lbl">Send on WhatsApp</span>
+          </a>
+          <a class="btn" id="bIg" href="https://instagram.com/dzynsbysoham" target="_blank" rel="noopener">
+            <span class="fill"></span><span class="lbl">Send on Instagram</span>
+          </a>
+          <button class="btn" id="bCopy">
+            <span class="fill"></span><span class="lbl">Copy brief</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+
+<!-- ============ RESUME ============ -->
+<div class="lb" id="cv" role="dialog" aria-modal="true" aria-labelledby="cvTitle">
+  <div class="lb-box cv-box">
+    <button class="lb-close" id="cvClose" aria-label="Close résumé"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 6l12 12M18 6L6 18" stroke-linecap="round"/></svg></button>
+    <div class="cv-scroll">
+      <header class="cv-head">
+        <div>
+          <div class="cv-k">Curriculum Vitæ · 2026</div>
+          <h2 id="cvTitle">Soham</h2>
+          <div class="cv-role">Graphic Designer &amp; Art Director — thumbnails, posters, identity, type</div>
+        </div>
+        <div class="cv-contact">
+          <a href="https://instagram.com/dzynsbysoham" target="_blank" rel="noopener">Instagram · @dzynsbysoham</a>
+          <a href="https://wa.me/918329014831" target="_blank" rel="noopener">WhatsApp · 8329014831</a>
+          <a href="/cdn-cgi/l/email-protection#3f5b4546514c5d464c50575e527f58525e5653115c5052"><span class="__cf_email__" data-cfemail="16726c6f7865746f65797e777b56717b777f7a3875797b">[email&#160;protected]</span></a>
+          <span class="cv-av">Mumbai, India · IST · Open to full-time &amp; freelance</span>
+        </div>
+      </header>
+
+      <div class="cv-grid">
+        <section>
+          <h3>Experience</h3>
+          <div class="cv-job">
+            <div class="cv-when">2021 — Present</div>
+            <div class="cv-what">
+              <b>Independent Designer / Art Director — DzynsBySoham</b><span>Mumbai</span>
+              <p>Running a one-person studio building thumbnail systems, posters, cover art and full artist identities for India's hip-hop scene. Headline credit on Emiway Bantai releases, and currently carrying the mainstream DHH / IHH thumbnail scene.</p>
+            </div>
+          </div>
+          <div class="cv-job">
+            <div class="cv-when">2019 — 2021</div>
+            <div class="cv-what">
+              <b>Freelance Graphic Designer</b><span>Mumbai</span>
+              <p>Thumbnail, mixtape cover, poster and flyer work for independent artists, labels and promoters — around a hundred pieces a year against fixed release dates.</p>
+            </div>
+          </div>
+
+          <h3>What I bring</h3>
+          <ul class="cv-list">
+            <li><b>Range.</b> Thumbnails, posters, cover art, identity, social systems, packaging, editorial and type — one visual language carried across every format.</li>
+            <li><b>Speed.</b> 24-hour average turnaround on a thumbnail pack, two revision rounds included.</li>
+            <li><b>Systems, not one-offs.</b> Repeatable grids, type scales and colour rules, so an artist looks consistent everywhere they show up.</li>
+            <li><b>Clean handover.</b> PSD, Figma, AI and editable source files — every size you need, named and ready to post.</li>
+          </ul>
+        </section>
+
+        <aside>
+          <h3>Selected credits</h3>
+          <ul class="cv-tags"><li>Emiway Bantai</li><li>MC VAJ</li><li>Fenech Crew</li><li>MC Stan</li><li>Divine</li><li>Raftaar</li><li>Sidhu Moose Wala</li><li>KR$NA</li><li>Talha Anjum</li><li>Young Stunners</li></ul>
+
+          <h3>Capabilities</h3>
+          <ul class="cv-list sm">
+            <li>Thumbnail packs &amp; art direction</li>
+            <li>Posters, flyers &amp; tour announcements</li>
+            <li>Album / EP / mixtape cover art</li>
+            <li>Artist identity &amp; brand systems</li>
+            <li>Social carousel &amp; story systems</li>
+            <li>Packaging &amp; merch artwork</li>
+            <li>Editorial &amp; magazine layout</li>
+            <li>Custom type &amp; lettering</li>
+          </ul>
+
+          <h3>Tools</h3>
+          <ul class="cv-tags sm"><li>Photoshop</li><li>Illustrator</li><li>Figma</li><li>After Effects</li><li>Blender</li><li>InDesign</li></ul>
+
+          <h3>Background</h3>
+          <p class="cv-note">Communication and visual design. 5+ years of professional practice since 2019 — 400+ thumbnails shipped, 40+ artists worked with.</p>
+        </aside>
+      </div>
+
+      <div class="cv-foot">
+        <span>References and a full portfolio PDF available on request.</span>
+        <button class="btn btn-dark" id="cvPrint"><span class="fill"></span><span class="lbl">Print / Save as PDF</span></button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ============ FOOTER ============ -->
+<footer class="ftr">
+  <div class="fmark" aria-hidden="true">DZYNSBYSOHAM</div>
+  <div class="wrap">
+    <div class="ftr-top">
+      <div>
+        <div class="fbrand">
+          <span class="m"><svg viewBox="0 0 24 24" fill="none"><path d="M12 2v20M2 12h20M5 5l14 14M19 5L5 19" stroke="#0A0A0C" stroke-width="2.6" stroke-linecap="round"/></svg></span>
+          <span class="t">DzynsBySoham<small>DESIGNS BY SOHAM</small></span>
+        </div>
+        <p>Thumbnails, posters and typographic artwork for India's hip-hop scene.</p>
+        <div class="soc">
+          <a href="https://instagram.com/dzynsbysoham" target="_blank" rel="noopener" aria-label="Instagram">
+            <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+          </a>
+          <a href="https://wa.me/918329014831" target="_blank" rel="noopener" aria-label="WhatsApp">
+            <svg viewBox="0 0 24 24"><path d="M20 11.8a8 8 0 0 1-11.9 7L4 20l1.2-4A8 8 0 1 1 20 11.8z"/></svg>
+          </a>
+          <a href="/cdn-cgi/l/email-protection#086c7271667b6a717b67606965486f65696164266b6765" aria-label="Email">
+            <svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M4 7l8 6 8-6"/></svg>
+          </a>
+          <a href="#top" aria-label="Back to top">
+            <svg viewBox="0 0 24 24"><path d="M12 19V5M6 11l6-6 6 6"/></svg>
+          </a>
+        </div>
+      </div>
+      <div>
+        <h4>Explore</h4>
+        <div class="fl">
+          <a href="#work">Work</a>
+          <a href="#studio">Studio</a>
+          <a href="#services">Services</a>
+          <a href="#process">Process</a>
+          <button class="f-cv" id="cvOpenF" type="button">Résumé</button>
+        </div>
+      </div>
+      <div>
+        <h4>Say hello</h4>
+        <div class="fl">
+          <a href="https://wa.me/918329014831" target="_blank" rel="noopener">WhatsApp · 83290 14831</a>
+          <a href="https://instagram.com/dzynsbysoham" target="_blank" rel="noopener">Instagram · @dzynsbysoham</a>
+          <a href="/cdn-cgi/l/email-protection#afcbd5d6c1dccdd6dcc0c7cec2efc8c2cec6c381ccc0c2">Email · <span class="__cf_email__" data-cfemail="1e7a6467706d7c676d71767f735e79737f7772307d7173">[email&#160;protected]</span></a>
+          <a href="#contact">Start a project →</a>
+        </div>
+      </div>
+    </div>
+    <div class="ftr-bot">
+      <span>© 2026 DZYNSBYSOHAM — ALL RIGHTS RESERVED</span>
+      <span class="r"><a href="#top">Back to top ↑</a><a href="https://instagram.com/dzynsbysoham" target="_blank" rel="noopener">Made in Mumbai</a></span>
+    </div>
+  </div>
+</footer>
+
+<!-- ============ LIGHTBOX ============ -->
+<div class="lb" id="lb" role="dialog" aria-modal="true" aria-label="Artwork preview">
+  <button class="lb-close" id="lbClose" aria-label="Close">
+    <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M6 6l12 12M18 6L6 18" stroke-linecap="round"/></svg>
+  </button>
+  <div class="lb-box">
+    <div class="lb-art" id="lbArt"></div>
+    <div class="lb-info">
+      <div>
+        <div class="t" id="lbTitle">—</div>
+        <div class="d" id="lbDesc">—</div>
+        <div class="tags" id="lbTags"></div>
+      </div>
+      <div class="lb-nav">
+        <button class="lb-btn" id="lbPrev" aria-label="Previous"><svg viewBox="0 0 24 24"><path d="M15 6l-6 6 6 6" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+        <button class="lb-btn" id="lbNext" aria-label="Next"><svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="toast" id="toast" role="status" aria-live="polite"><span class="ic">✓</span><span id="toastMsg">Copied</span></div>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+/* ============================================================
+   DZYNSBYSOHAM — artwork library v2
+   21 original vector pieces built from one shared design system:
+   primitives, gradients, halftone, duotone figures, type rules.
+   ============================================================ */
+const ART = (function(){
+const F = "'Bricolage Grotesque','Helvetica Neue',Arial,sans-serif";
+const FM = "'JetBrains Mono',monospace";
+const FI = "'Inter Tight','Helvetica Neue',Arial,sans-serif";
+/* ============================================================
+   DZYNSBYSOHAM — artwork library v2
+   A shared design system: primitives (grain, halftone, duotone
+   portrait, rules, labels, wave) composed into 21 real pieces.
+   ============================================================ */
+
+
+
+
+const C = {
+  ink:'#0A0A0C', ink2:'#17171C', ink3:'#24242B', paper:'#F3F1EA', bone:'#E3DED1',
+  acid:'#CCFF2E', acidD:'#A9E800', blue:'#2B4CFF', coral:'#FF4F2E',
+  violet:'#9B7BFF', mint:'#00E0A4', steel:'#7E849B', silver:'#C6C9D4', white:'#FFFFFF'
+};
+
+let _u = 0;
+const U = () => 'k' + (++_u);
+
+/* ---------- primitives ---------- */
+function T(x, y, t, o) {
+  o = o || {};
+  return '<text x="' + x + '" y="' + y + '" font-family="' + (o.mono ? FM : (o.i ? FI : F)) + '"' +
+    ' font-size="' + (o.s || 16) + '" font-weight="' + (o.w || 400) + '"' +
+    ' letter-spacing="' + (o.ls || 0) + '" fill="' + (o.c || C.ink) + '"' +
+    ' text-anchor="' + (o.a || 'start') + '"' + (o.op != null ? ' opacity="' + o.op + '"' : '') +
+    (o.fw ? ' font-style="italic"' : '') + '>' + t + '</text>';
+}
+function D(x, y, w, h, c, o) {
+  o = o || {};
+  return '<rect x="' + x + '" y="' + y + '" width="' + w + '" height="' + h + '" fill="' + (c || C.ink) + '"' +
+    (o.rx ? ' rx="' + o.rx + '"' : '') + (o.op != null ? ' opacity="' + o.op + '"' : '') +
+    (o.st ? ' stroke="' + o.st + '" stroke-width="' + (o.sw || 1) + '"' : '') +
+    (o.rot ? ' transform="rotate(' + o.rot + ' ' + (x + w / 2) + ' ' + (y + h / 2) + ')"' : '') + '/>';
+}
+function CI(x, y, r, c, o) {
+  o = o || {};
+  return '<circle cx="' + x + '" cy="' + y + '" r="' + r + '" fill="' + (c || C.ink) + '"' +
+    (o.op != null ? ' opacity="' + o.op + '"' : '') +
+    (o.st ? ' stroke="' + o.st + '" stroke-width="' + (o.sw || 1) + '"' : '') + '/>';
+}
+function L(x1, y1, x2, y2, c, w, o) {
+  o = o || {};
+  return '<line x1="' + x1 + '" y1="' + y1 + '" x2="' + x2 + '" y2="' + y2 + '" stroke="' + (c || C.ink) + '"' +
+    ' stroke-width="' + (w || 1) + '"' + (o.op != null ? ' opacity="' + o.op + '"' : '') +
+    (o.dash ? ' stroke-dasharray="' + o.dash + '"' : '') + '/>';
+}
+function PATH(d, o) {
+  o = o || {};
+  return '<path d="' + d + '" fill="' + (o.fill || 'none') + '"' +
+    (o.stroke ? ' stroke="' + o.stroke + '" stroke-width="' + (o.sw || 2) + '"' : '') +
+    (o.op != null ? ' opacity="' + o.op + '"' : '') +
+    (o.lc ? ' stroke-linecap="' + o.lc + '"' : '') +
+    (o.lj ? ' stroke-linejoin="' + o.lj + '"' : '') + '/>';
+}
+
+/* gradient */
+function LG(stops, ang) {
+  const id = U();
+  const a = ((ang == null ? 90 : ang) * Math.PI) / 180;
+  const x = Math.cos(a) * .5, y = Math.sin(a) * .5;
+  return { id, s: '<linearGradient id="' + id + '" x1="' + (.5 - x) + '" y1="' + (.5 - y) + '" x2="' + (.5 + x) + '" y2="' + (.5 + y) + '">' +
+    stops.map(s => '<stop offset="' + s[0] + '" stop-color="' + s[1] + '"' + (s[2] != null ? ' stop-opacity="' + s[2] + '"' : '') + '/>').join('') +
+    '</linearGradient>' };
+}
+function RG(stops, cx, cy, r) {
+  const id = U();
+  return { id, s: '<radialGradient id="' + id + '" cx="' + (cx == null ? .5 : cx) + '" cy="' + (cy == null ? .5 : cy) + '" r="' + (r == null ? .7 : r) + '">' +
+    stops.map(s => '<stop offset="' + s[0] + '" stop-color="' + s[1] + '"' + (s[2] != null ? ' stop-opacity="' + s[2] + '"' : '') + '/>').join('') +
+    '</radialGradient>' };
+}
+/* halftone dot pattern */
+function DOTS(c, r, gap, op) {
+  const id = U();
+  return { id, s: '<pattern id="' + id + '" width="' + gap + '" height="' + gap + '" patternUnits="userSpaceOnUse">' +
+    '<circle cx="' + gap / 2 + '" cy="' + gap / 2 + '" r="' + r + '" fill="' + c + '"' + (op != null ? ' opacity="' + op + '"' : '') + '/></pattern>' };
+}
+/* diagonal stripe pattern */
+function STRIPES(c, w, gap, ang, op) {
+  const id = U();
+  return { id, s: '<pattern id="' + id + '" width="' + gap + '" height="' + gap + '" patternUnits="userSpaceOnUse" patternTransform="rotate(' + (ang || 0) + ')">' +
+    '<rect width="' + w + '" height="' + gap + '" fill="' + c + '"' + (op != null ? ' opacity="' + op + '"' : '') + '/></pattern>' };
+}
+/* film grain */
+function GRAIN(w, h, op, mode) {
+  const id = U();
+  return { id, s: '<filter id="' + id + '" x="0" y="0" width="100%" height="100%">' +
+    '<feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="3" stitchTiles="stitch" result="n"/>' +
+    '<feColorMatrix in="n" type="matrix" values="0 0 0 0 0.5  0 0 0 0 0.5  0 0 0 0 0.5  0 0 0 1 0"/>' +
+    '</filter>', use: '<rect x="0" y="0" width="' + w + '" height="' + h + '" fill="#808080" filter="url(#' + id + ')" opacity="' + (op == null ? .3 : op) + '" style="mix-blend-mode:' + (mode || 'overlay') + '"/>' };
+}
+/* soft drop shadow */
+function SHADOW(dy, blur, op) {
+  const id = U();
+  return { id, s: '<filter id="' + id + '" x="-30%" y="-30%" width="160%" height="160%">' +
+    '<feDropShadow dx="0" dy="' + dy + '" stdDeviation="' + blur + '" flood-color="#000" flood-opacity="' + (op == null ? .4 : op) + '"/></filter>' };
+}
+/* clip half */
+function HALF(x, y, w, h, side) {
+  const id = U();
+  return { id, s: '<clipPath id="' + id + '"><rect x="' + x + '" y="' + y + '" width="' + (side === 'l' ? w / 2 : w / 2) + '" height="' + h + '"' +
+    (side === 'l' ? '' : ' x="' + (x + w / 2) + '"') + '/></clipPath>' };
+}
+
+/* ---------- the "photo": duotone figure ---------- */
+function silPath(x, y, s) {
+  return 'M' + (x - s * 2.0) + ' ' + (y + s * 3.4) +
+    ' C' + (x - s * 2.0) + ' ' + (y + s * 1.55) + ' ' + (x - s * 1.05) + ' ' + (y + s * 1.02) + ' ' + (x - s * 0.62) + ' ' + (y + s * 1.02) +
+    ' L' + (x - s * 0.62) + ' ' + (y + s * 0.3) +
+    ' A' + s + ' ' + s + ' 0 1 1 ' + (x + s * 0.62) + ' ' + (y + s * 0.3) +
+    ' L' + (x + s * 0.62) + ' ' + (y + s * 1.02) +
+    ' C' + (x + s * 1.05) + ' ' + (y + s * 1.02) + ' ' + (x + s * 2.0) + ' ' + (y + s * 1.55) + ' ' + (x + s * 2.0) + ' ' + (y + s * 3.4) + ' Z';
+}
+/* head-and-shoulders silhouette; tone = base colour */
+function FIG(x, y, s, tone, extra) {
+  return '<path d="' + silPath(x, y, s) + '" fill="' + tone + '"/>' + (extra || '');
+}
+/* a second smaller figure for a "shot" feel */
+function FIG2(x, y, s, tone) {
+  const d = 'M' + (x - s * 1.1) + ' ' + (y + s * 4.2) +
+    ' C' + (x - s * 1.1) + ' ' + (y + s * 1.5) + ' ' + (x - s * 0.5) + ' ' + (y + s * 0.6) + ' ' + (x - s * 0.34) + ' ' + (y + s * 0.6) +
+    ' L' + (x - s * 0.34) + ' ' + (y + s * 0.1) +
+    ' A' + (s * 0.5) + ' ' + (s * 0.5) + ' 0 1 1 ' + (x + s * 0.34) + ' ' + (y + s * 0.1) +
+    ' L' + (x + s * 0.34) + ' ' + (y + s * 0.6) +
+    ' C' + (x + s * 0.5) + ' ' + (y + s * 0.6) + ' ' + (x + s * 1.1) + ' ' + (y + s * 1.5) + ' ' + (x + s * 1.1) + ' ' + (y + s * 4.2) + ' Z';
+  return '<path d="' + d + '" fill="' + tone + '"/>';
+}
+/* mic in hand */
+function MIC(x, y, s, tone) {
+  return '<g transform="rotate(-18 ' + x + ' ' + y + ')">' +
+    '<rect x="' + (x - s * .34) + '" y="' + (y - s * 1.1) + '" width="' + s * .68 + '" height="' + s * 1.5 + '" rx="' + s * .34 + '" fill="' + tone + '"/>' +
+    '<rect x="' + (x - s * .13) + '" y="' + (y + s * .38) + '" width="' + s * .26 + '" height="' + s * 1.3 + '" fill="' + tone + '"/>' +
+    '<rect x="' + (x - s * .42) + '" y="' + (y - s * 1.1) + '" width="' + s * .84 + '" height="' + s * 1.5 + '" rx="' + s * .42 + '" fill="none" stroke="' + tone + '" stroke-width="' + s * .1 + '" opacity=".55"/>' +
+    '</g>';
+}
+
+/* ---------- small design elements ---------- */
+function RULER(x, y, w, c, op) { return L(x, y, x + w, y, c || C.ink, 1, { op: op }); }
+function TICKER(x, y, w, text, c, bg, o) {
+  o = o || {};
+  const id = U();
+  return '<clipPath id="' + id + '"><rect x="' + x + '" y="' + y + '" width="' + w + '" height="' + (o.h || 22) + '"/></clipPath>' +
+    D(x, y, w, o.h || 22, bg, { op: o.op }) +
+    '<g clip-path="url(#' + id + ')">' + T(x + 10, y + (o.h || 22) / 2 + 4, text, { mono: true, s: o.s || 9.5, ls: 2.2, c: c || C.ink, w: 500 }) + '</g>';
+}
+function BADGE(x, y, text, bg, fg, o) {
+  o = o || {};
+  const w = text.length * (o.s || 10) * .78 + 22, h = o.h || 22;
+  return D(x, y, w, h, bg, { rx: h / 2, rot: o.rot || 0 }) +
+    T(x + w / 2, y + h / 2 + (o.s || 10) * .36, text, { mono: true, s: o.s || 10, ls: 1.6, c: fg || C.ink, a: 'middle', w: 600 });
+}
+function CHIP(x, y, text, c, o) {
+  o = o || {};
+  const s = o.s || 10, w = text.length * s * .74 + 20, h = o.h || 24;
+  return D(x, y, w, h, 'none', { rx: 4, st: c, sw: 1.2, op: o.op }) +
+    T(x + w / 2, y + h / 2 + s * .36, text, { mono: true, s: s, ls: 1.4, c: c, a: 'middle', w: 500 });
+}
+function STAR(cx, cy, r, c, o) {
+  o = o || {};
+  const pts = [];
+  for (let i = 0; i < 16; i++) {
+    const rr = i % 2 ? r * .38 : r, a = (i * 22.5 - 90) * Math.PI / 180;
+    pts.push((cx + Math.cos(a) * rr).toFixed(1) + ',' + (cy + Math.sin(a) * rr).toFixed(1));
+  }
+  return PATH('M' + pts.join('L') + 'Z', { fill: c, op: o.op });
+}
+function WAVEFORM(x, y, w, h, bars, c, seed, op) {
+  let s = '', n = bars, bw = w / n;
+  for (let i = 0; i < n; i++) {
+    const t = (Math.sin(i * .7 + (seed || 1)) * .5 + .5) * (Math.sin(i * .19 + 2) * .35 + .65);
+    const bh = Math.max(2, t * h);
+    s += D(x + i * bw, y + (h - bh) / 2, Math.max(1.4, bw * .55), bh, c, { op: op });
+  }
+  return s;
+}
+function SQRIPES(x, y, w, h, c, op) {
+  let s = '';
+  for (let i = 0; i < 16; i++) s += D(x, y + i * (h / 16), w, h / 32, c, { op: op == null ? .5 : op });
+  return s;
+}
+function BARCODE(x, y, w, h, c) {
+  let s = '', x0 = x;
+  while (x0 < x + w) {
+    const bw = 1 + Math.round(((x0 * 7.3) % 3));
+    if ((x0 * 13) % 5 > 1.6) s += D(x0, y, bw, h, c);
+    x0 += bw + 1 + Math.round(((x0 * 3.1) % 2));
+  }
+  return s;
+}
+function ARC(cx, cy, r, a0, a1, c, w, o) {
+  o = o || {};
+  const p = (a) => (cx + Math.cos(a * Math.PI / 180) * r).toFixed(2) + ' ' + (cy + Math.sin(a * Math.PI / 180) * r).toFixed(2);
+  const large = Math.abs(a1 - a0) > 180 ? 1 : 0;
+  return PATH('M' + p(a0) + ' A' + r + ' ' + r + ' 0 ' + large + ' 1 ' + p(a1), { stroke: c, sw: w || 3, op: o.op, lc: 'round' });
+}
+function RAYS(cx, cy, r1, r2, n, c, op, rot) {
+  let s = '';
+  for (let i = 0; i < n; i++) {
+    const a = ((i * 360 / n) + (rot || 0)) * Math.PI / 180;
+    const x1 = cx + Math.cos(a) * r1, y1 = cy + Math.sin(a) * r1;
+    const x2 = cx + Math.cos(a) * r2, y2 = cy + Math.sin(a) * r2;
+    const w = (r2 - r1) * .30;
+    const p1 = (cx + Math.cos(a + w / r1) * r1) + ' ' + (cy + Math.sin(a + w / r1) * r1);
+    const p2 = (cx + Math.cos(a - w / r1) * r2) + ' ' + (cy + Math.sin(a - w / r1) * r2);
+    s += PATH('M' + x1.toFixed(1) + ' ' + y1.toFixed(1) + 'L' + p1 + 'L' + p2 + 'L' + x2.toFixed(1) + ' ' + y2.toFixed(1) + 'Z', { fill: c, op: op });
+  }
+  return s;
+}
+
+const PIECES = [
+/* 1 ───────────────────────────────── EMiWAY BANTAI · thumbnail */
+{
+  id:'a1', cat:'thumbnails', span:6, w:800, h:450,
+  title:'EMiWAY BANTAI — "Nightfall" Official Single Visual',
+  client:'Emiway Bantai', year:'2026',
+  desc:'A 16:9 hero thumbnail built on a hard duotone portrait, chrome display type and a single red badge. Hook reads in under a second at 120px on a phone.',
+  tags:['Duotone portrait','Chrome type','CTR hook'],
+  svg:(()=>{ const bg=LG([[0,'#0B0B10'],[1,'#191926']],115);
+    const pane=LG([[0,'#2B4CFF'],[1,'#0A0A0C']],90);
+    const clip=U(), half=U(), hp=LG([[0,'#EFEFF4'],[.5,'#9AA3BE'],[1,'#2B4CFF']],120);
+    const dots=DOTS('#FFFFFF',1.5,7,.16);
+    const g=GRAIN(800,450,.34);
+    return `<svg viewBox="0 0 800 450" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Emiway Bantai Nightfall official single visual">
+<defs>${bg.s}${pane.s}${hp.s}${dots.s}<clipPath id="${clip}"><rect x="452" y="0" width="348" height="450"/></clipPath>
+<clipPath id="${half}"><rect x="452" y="0" width="174" height="450"/></clipPath></defs>
+<rect width="800" height="450" fill="url(#${bg.id})"/>
+<g clip-path="url(#${clip})">
+  <rect x="452" y="0" width="348" height="450" fill="url(#${pane.id})"/>
+  <circle cx="626" cy="196" r="150" fill="#CCFF2E" opacity=".1"/>
+  <path d="${silPath(626,206,92)}" fill="url(#${hp.id})"/>
+  <path d="${silPath(626,206,92)}" fill="#0A0A0C" opacity=".62" clip-path="url(#${half})"/>
+  <rect x="452" y="0" width="348" height="450" fill="url(#${dots.id})"/>
+  <path d="M560 120 A92 92 0 0 0 548 300" fill="none" stroke="#CCFF2E" stroke-width="5" opacity=".9"/>
+</g>
+<rect x="451" y="0" width="1.5" height="450" fill="#FFFFFF" opacity=".22"/>
+<text x="40" y="46" font-family="${FM}" font-size="10" letter-spacing="2.6" fill="#8E93A6">OFFICIAL SINGLE — EMIWAY BANTAI</text>
+<text x="40" y="196" font-family="${F}" font-size="104" font-weight="800" letter-spacing="-4" fill="#FFFFFF">NIGHT</text>
+<text x="40" y="288" font-family="${F}" font-size="104" font-weight="800" letter-spacing="-4" fill="#CCFF2E">FALL</text>
+<rect x="40" y="318" width="118" height="26" rx="13" fill="#FF4F2E"/>
+<text x="99" y="335" font-family="${FM}" font-size="11" letter-spacing="1.8" fill="#0A0A0C" text-anchor="middle" font-weight="600">OUT NOW</text>
+<text x="172" y="336" font-family="${FM}" font-size="10" letter-spacing="2" fill="#8E93A6">02.11 — STREAM</text>
+<g>${TICKER(0,404,800,'DZYNSBYSOHAM  ·  THUMBNAIL 01  ·  16:9  ·  EMIWAY BANTAI  ·  NIGHTFALL  ·  2026','#0A0A0C','#CCFF2E',{h:26,s:9.5})}</g>
+${g.use}
+</svg>`;})()
+},
+
+/* 2 ───────────────────────────────── Aa type specimen */
+{
+  id:'a3', cat:'typography', span:3, w:600, h:600,
+  title:'Aa — Grotesk Specimen Sheet',
+  client:'Type specimen', year:'2026',
+  desc:'A specimen page for the house grotesk: optical-size axis, weight ladder, cap and x-height ratios, and a baseline grid the whole set sits on.',
+  tags:['Specimen','Weight ladder','Baseline grid'],
+  svg:(()=>{ const g=GRAIN(600,600,.3);
+    const rows=[['THIN',200],['REGULAR',400],['MEDIUM',500],['SEMI BOLD',600],['BLACK',800]];
+    let ladder='';
+    rows.forEach((r,i)=>{ const y=372+i*40;
+      ladder+=T(40,y,r[0],{mono:true,s:9,ls:2,c:'#8A8F9C'});
+      ladder+=T(140,y,'Aa Gg 24',{s:24,w:r[1],c:'#0A0A0C',ls:-.6});
+      ladder+=L(360,y-7,560,y-7,'#D6D2C6',1);
+      ladder+=T(560,y,'W'+r[1],{mono:true,s:8.5,ls:1.4,c:'#8A8F9C',a:'end'});
+    });
+    return `<svg viewBox="0 0 600 600" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Type specimen sheet">
+<rect width="600" height="600" fill="#F3F1EA"/>
+${[...Array(24)].map((_,i)=>L(0,120+i*14,600,120+i*14,'#0A0A0C',.6,{op:.08})).join('')}
+${[...Array(24)].map((_,i)=>L(40+i*14,120,40+i*14,470,'#0A0A0C',.6,{op:.05})).join('')}
+<rect x="40" y="40" width="520" height="4" fill="#0A0A0C"/>
+<text x="40" y="76" font-family="${FM}" font-size="10" letter-spacing="2.8" fill="#0A0A0C">BRICOLAGE GROTESQUE — SPECIMEN 01</text>
+<text x="560" y="76" font-family="${FM}" font-size="10" letter-spacing="2" fill="#8A8F9C" text-anchor="end">12 PT GRID</text>
+<text x="28" y="300" font-family="${F}" font-size="300" font-weight="800" letter-spacing="-14" fill="#0A0A0C">Aa</text>
+<rect x="352" y="128" width="208" height="176" fill="#2B4CFF"/>
+<text x="372" y="164" font-family="${FM}" font-size="9" letter-spacing="2" fill="#FFFFFF" opacity=".8">OPTICAL SIZE</text>
+<text x="372" y="252" font-family="${F}" font-size="76" font-weight="800" letter-spacing="-3" fill="#FFFFFF">96</text>
+<text x="372" y="286" font-family="${FM}" font-size="9" letter-spacing="2" fill="#FFFFFF" opacity=".8">DISPLAY CUT</text>
+<rect x="352" y="320" width="208" height="26" fill="#CCFF2E"/>
+<text x="456" y="337" font-family="${FM}" font-size="10" letter-spacing="1.6" fill="#0A0A0C" text-anchor="middle" font-weight="600">CAP 0.65 · X-HT 0.52</text>
+${ladder}
+<rect x="40" y="560" width="520" height="4" fill="#0A0A0C"/>
+<text x="40" y="586" font-family="${FM}" font-size="9" letter-spacing="2" fill="#8A8F9C">TRACKING +1 · LEADING 0.86 · GRID 14</text>
+<text x="560" y="586" font-family="${FM}" font-size="9" letter-spacing="2" fill="#8A8F9C" text-anchor="end">DZYNSBYSOHAM</text>
+${g.use}
+</svg>`;})()
+},
+
+/* 3 ───────────────────────────────── BANTAI NIGHTS poster */
+{
+  id:'a2', cat:'posters', span:3, w:600, h:800,
+  title:'BANTAI NIGHTS — Live Show Poster',
+  client:'Studio 44, Mumbai', year:'2026',
+  desc:'A gig poster for a sold-out Mumbai night: halftone performance shot, stacked display type, a full information block and a ticketing barcode.',
+  tags:['Gig poster','Halftone','Info hierarchy'],
+  svg:(()=>{ const dots=DOTS('#FF4F2E',2.1,6,.85);
+    const clip=U();
+    const g=GRAIN(600,800,.34);
+    const glow=RG([[0,'#FF4F2E',.55],[1,'#FF4F2E',0]],.5,.5,.6);
+    const lines=['EMiWAY BANTAI','MC VAJ','TANHA S.','KR$NA'];
+    let line=''; lines.forEach((n,i)=>{ line+=T(44,596+i*30,n,{mono:true,s:14,ls:1.4,c:i===0?'#FFFFFF':'#9A9AA6',w:i===0?600:400}); });
+    return `<svg viewBox="0 0 600 800" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Bantai Nights live show poster">
+<rect width="600" height="800" fill="#0A0A0C"/>
+<defs>${dots.s}${glow.s}<clipPath id="${clip}"><rect x="0" y="0" width="600" height="392"/></clipPath></defs>
+<g clip-path="url(#${clip})">
+  <rect x="0" y="0" width="600" height="392" fill="#17171C"/>
+  <circle cx="300" cy="170" r="200" fill="url(#${glow.id})"/>
+  <path d="${silPath(300,178,104)}" fill="#0A0A0C"/>
+  <g>${MIC(300,236,34,'#0A0A0C')}</g>
+  <path d="M212 150 A104 104 0 0 0 200 320" fill="none" stroke="#FF4F2E" stroke-width="6"/>
+  <rect x="0" y="0" width="600" height="392" fill="url(#${dots.id})"/>
+</g>
+<text x="44" y="58" font-family="${FM}" font-size="10" letter-spacing="3" fill="#FF4F2E">STUDIO 44 PRESENTS</text>
+<text x="556" y="58" font-family="${FM}" font-size="10" letter-spacing="2" fill="#6E7280" text-anchor="end">LIVE · 2026</text>
+<text x="44" y="480" font-family="${F}" font-size="92" font-weight="800" letter-spacing="-4" fill="#FFFFFF">BANTAI</text>
+<text x="44" y="560" font-family="${F}" font-size="92" font-weight="800" letter-spacing="-4" fill="none" stroke="#FFFFFF" stroke-width="1.6">NIGHTS</text>
+${line}
+<rect x="44" y="642" width="512" height="1" fill="#FFFFFF" opacity=".18"/>
+<text x="44" y="676" font-family="${F}" font-size="26" font-weight="700" letter-spacing="-.6" fill="#FFFFFF">SAT 22 NOV · 9PM</text>
+<text x="44" y="702" font-family="${FM}" font-size="10" letter-spacing="2" fill="#8A8F9C">STUDIO 44, ANDHERI WEST, MUMBAI</text>
+<text x="556" y="676" font-family="${F}" font-size="30" font-weight="800" letter-spacing="-1" fill="#CCFF2E" text-anchor="end">₹499</text>
+<text x="556" y="702" font-family="${FM}" font-size="9" letter-spacing="2" fill="#8A8F9C" text-anchor="end">DOORS 8PM · 21+</text>
+<g>${BARCODE(44,730,120,34,'#FFFFFF')}</g>
+<text x="180" y="752" font-family="${FM}" font-size="9" letter-spacing="2" fill="#6E7280">TICKETS · INSTAGRAM @STUDIO44</text>
+<circle cx="510" cy="744" r="46" fill="#CCFF2E"/>
+<text x="510" y="738" font-family="${F}" font-size="19" font-weight="800" fill="#0A0A0C" text-anchor="middle">SOLD</text>
+<text x="510" y="760" font-family="${F}" font-size="19" font-weight="800" fill="#0A0A0C" text-anchor="middle">OUT</text>
+${g.use}
+</svg>`;})()
+},
+
+/* 4 ───────────────────────────────── GULLY LOOP thumbnail */
+{
+  id:'a4', cat:'thumbnails', span:6, w:800, h:450,
+  title:'MC VAJ — "Gully Loop" Concept Thumbnail',
+  client:'MC VAJ', year:'2026',
+  desc:'A neon corridor with a rim-lit figure and one loud hook. Type is pushed into the corridor so the frame still reads as a thumbnail at 10% scale.',
+  tags:['Neon','Depth','Hook typography'],
+  svg:(()=>{ const bg=LG([[0,'#2B1E6B'],[.5,'#141034'],[1,'#07060F']],105);
+    const gl=RG([[0,'#9B7BFF',.42],[1,'#9B7BFF',0]],.5,.5,.55);
+    const chrome=LG([[0,'#F4F4F8'],[.38,'#98A0B8'],[.66,'#2B4CFF'],[1,'#0A0A14']],112);
+    const clip=U();
+    const g=GRAIN(800,450,.34);
+    let corridor='';
+    for(let i=0;i<8;i++){ const k=i/7, s=30+k*250, o=.08+k*.42;
+      corridor+=D(600-s,230-s*.66,s*2,s*1.32,'none',{st:'#9B7BFF',sw:1.5,op:o});
+    }
+    return `<svg viewBox="0 0 800 450" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Gully Loop concept thumbnail">
+<defs>${bg.s}${gl.s}${chrome.s}<clipPath id="${clip}"><circle cx="614" cy="212" r="164"/></clipPath></defs>
+<rect width="800" height="450" fill="url(#${bg.id})"/>
+<circle cx="614" cy="212" r="300" fill="url(#${gl.id})"/>
+${corridor}
+<circle cx="614" cy="212" r="164" fill="#0B0B18"/>
+<g clip-path="url(#${clip})">
+  <path d="${silPath(614,196,86)}" fill="url(#${chrome.id})"/>
+  <path d="${silPath(614,196,86)}" fill="#0A0A0C" opacity=".28"/>
+</g>
+<circle cx="614" cy="212" r="164" fill="none" stroke="#9B7BFF" stroke-width="1.6" opacity=".55"/>
+<path d="M520 108 A164 164 0 0 0 470 250" fill="none" stroke="#CCFF2E" stroke-width="5" stroke-linecap="round"/>
+<text x="40" y="58" font-family="${FM}" font-size="10" letter-spacing="2.6" fill="#9B7BFF">MC VAJ — CONCEPT THUMBNAIL</text>
+<rect x="40" y="72" width="46" height="3" fill="#FF4F2E"/>
+<text x="40" y="252" font-family="${F}" font-size="92" font-weight="800" letter-spacing="-4.2" fill="#FFFFFF">GULLY</text>
+<text x="40" y="332" font-family="${F}" font-size="92" font-weight="800" letter-spacing="-4.2" fill="#CCFF2E">LOOP</text>
+<rect x="40" y="356" width="128" height="26" rx="13" fill="#CCFF2E"/>
+<text x="104" y="373" font-family="${FM}" font-size="10" letter-spacing="1.8" fill="#0A0A0C" text-anchor="middle" font-weight="600">OUT 02.11</text>
+<text x="182" y="373" font-family="${FM}" font-size="9" letter-spacing="2" fill="#8E86B8">SINGLE · MC VAJ</text>
+<text x="40" y="420" font-family="${FM}" font-size="9" letter-spacing="2.2" fill="#6A6292">CORRIDOR GRID · 8 RINGS · HOOK 92PX</text>
+${g.use}
+</svg>`;})()
+},
+
+/* 5 ───────────────────────────────── DZYNS identity board */
+{
+  id:'a5', cat:'identity', span:6, w:800, h:450,
+  title:'DZYNSBYSOHAM — Wordmark and Mark System',
+  client:'DzynsBySoham', year:'2026',
+  desc:'The own-brand system: a four-point mark, one wordmark, a lockup and the clear-space rules that keep it reproducible at any size.',
+  tags:['Brand mark','Lockup','Clear space'],
+  svg:(()=>{ const g=GRAIN(800,450,.3);
+    return `<svg viewBox="0 0 800 450" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="DzynsBySoham identity system board">
+<rect width="800" height="450" fill="#F3F1EA"/>
+<rect x="0" y="0" width="800" height="4" fill="#0A0A0C"/>
+<text x="40" y="52" font-family="${FM}" font-size="10" letter-spacing="2.8" fill="#0A0A0C">IDENTITY SYSTEM — 01</text>
+<text x="760" y="52" font-family="${FM}" font-size="10" letter-spacing="2" fill="#8A8F9C" text-anchor="end">PRIMARY MARK</text>
+<text x="40" y="150" font-family="${F}" font-size="30" font-weight="800" letter-spacing="-.8" fill="#0A0A0C">THE MARK</text>
+<rect x="40" y="166" width="34" height="3" fill="#FF4F2E"/>
+<text x="40" y="200" font-family="${FI}" font-size="12" fill="#4A4A50">A four-point star cut from</text>
+<text x="40" y="218" font-family="${FI}" font-size="12" fill="#4A4A50">the letter D. One unit wide,</text>
+<text x="40" y="236" font-family="${FI}" font-size="12" fill="#4A4A50">drawn on a 12-point grid.</text>
+<text x="40" y="268" font-family="${FM}" font-size="9" letter-spacing="1.6" fill="#8A8F9C">MIN 14MM · MONO FALLBACK</text>
+<text x="40" y="288" font-family="${FM}" font-size="9" letter-spacing="1.6" fill="#8A8F9C">12-POINT ASTERISK · 1 COLOUR</text>
+<g stroke="#0A0A0C" stroke-opacity=".12" stroke-width="1">
+  <line x1="300" y1="78" x2="300" y2="322"/><line x1="380" y1="78" x2="380" y2="322"/>
+  <line x1="460" y1="78" x2="460" y2="322"/><line x1="540" y1="78" x2="540" y2="322"/>
+  <line x1="260" y1="120" x2="580" y2="120"/><line x1="260" y1="200" x2="580" y2="200"/>
+  <line x1="260" y1="280" x2="580" y2="280"/>
+</g>
+<rect x="260" y="78" width="320" height="244" fill="none" stroke="#0A0A0C" stroke-width="1" stroke-dasharray="4 5" opacity=".5"/>
+<path d="M420 106 L432 186 L512 186 L441 234 L466 314 L420 262 L374 314 L399 234 L328 186 L408 186 Z" fill="#0A0A0C"/>
+<text x="420" y="150" font-family="${FM}" font-size="7" letter-spacing="1.2" fill="#8A8F9C" text-anchor="middle">X = 1 UNIT</text>
+<text x="40" y="366" font-family="${F}" font-size="44" font-weight="800" letter-spacing="-1.8" fill="#0A0A0C">DZYNSBYSOHAM</text>
+<text x="40" y="388" font-family="${FM}" font-size="9" letter-spacing="3" fill="#8A8F9C">DESIGNS BY SOHAM</text>
+<g transform="translate(40,404)">
+  <rect x="0" y="0" width="26" height="26" fill="#0A0A0C"/>
+  <path d="M13 3 L16 12 L25 12 L17 17 L20 26 L13 20 L6 26 L9 17 L1 12 L10 12 Z" fill="#F3F1EA"/>
+  <rect x="34" y="0" width="26" height="26" fill="#CCFF2E"/>
+  <path d="M47 3 L50 12 L59 12 L51 17 L54 26 L47 20 L40 26 L43 17 L35 12 L44 12 Z" fill="#0A0A0C"/>
+  <rect x="68" y="0" width="26" height="26" fill="#2B4CFF"/>
+  <path d="M81 3 L84 12 L93 12 L85 17 L88 26 L81 20 L74 26 L77 17 L69 12 L78 12 Z" fill="#FFFFFF"/>
+  <rect x="102" y="0" width="26" height="26" fill="#FF4F2E"/>
+  <path d="M115 3 L118 12 L127 12 L119 17 L122 26 L115 20 L108 26 L111 17 L103 12 L112 12 Z" fill="#0A0A0C"/>
+</g>
+<text x="760" y="424" font-family="${FM}" font-size="9" letter-spacing="2" fill="#8A8F9C" text-anchor="end">MIN 14MM · MONO FALLBACK · 12-POINT ASTERISK</text>
+${g.use}
+</svg>`;})()
+},
+
+/* 6 ───────────────────────────────── NO CAP poster */
+{
+  id:'a6', cat:'posters', span:3, w:600, h:800,
+  title:'NO CAP — Tour Poster Series (Edition 03)',
+  client:'NO CAP', year:'2026',
+  desc:'One of a five-poster tour series. Every edition keeps the same grid, the same stack and only the city block changes — that is the system.',
+  tags:['Poster series','Grid system','Edition'],
+  svg:(()=>{ const dots=DOTS('#0A0A0C',2.4,7,.9);
+    const clip=U();
+    const g=GRAIN(600,800,.3);
+    return `<svg viewBox="0 0 600 800" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="No Cap tour poster series edition three">
+<defs>${dots.s}<clipPath id="${clip}"><rect x="40" y="286" width="240" height="300"/></clipPath></defs>
+<rect width="600" height="800" fill="#CCFF2E"/>
+<text x="40" y="58" font-family="${FM}" font-size="10" letter-spacing="3" fill="#0A0A0C">NO CAP — TOUR SERIES</text>
+<text x="560" y="58" font-family="${FM}" font-size="10" letter-spacing="2" fill="#0A0A0C" text-anchor="end" opacity=".6">03 / 05</text>
+<g clip-path="url(#${clip})">
+  <rect x="40" y="286" width="240" height="300" fill="#0A0A0C"/>
+  <path d="${silPath(160,356,64)}" fill="#CCFF2E"/>
+  <rect x="40" y="286" width="240" height="300" fill="url(#${dots.id})" opacity=".35"/>
+</g>
+<rect x="40" y="286" width="240" height="300" fill="none" stroke="#0A0A0C" stroke-width="2"/>
+<text x="40" y="212" font-family="${F}" font-size="118" font-weight="800" letter-spacing="-6" fill="#0A0A0C">NO</text>
+<text x="40" y="272" font-family="${F}" font-size="118" font-weight="800" letter-spacing="-6" fill="none" stroke="#0A0A0C" stroke-width="2.2">CAP</text>
+<text x="320" y="330" font-family="${FM}" font-size="10" letter-spacing="2.4" fill="#0A0A0C" opacity=".65">CITY 03</text>
+<text x="320" y="392" font-family="${F}" font-size="46" font-weight="800" letter-spacing="-1.8" fill="#0A0A0C">BANGALORE</text>
+<rect x="320" y="416" width="240" height="1.5" fill="#0A0A0C" opacity=".35"/>
+<text x="320" y="450" font-family="${FM}" font-size="10" letter-spacing="2" fill="#0A0A0C" opacity=".7">FRI 06 DEC · 9PM</text>
+<text x="320" y="474" font-family="${FM}" font-size="10" letter-spacing="2" fill="#0A0A0C" opacity=".7">SECURITY GROUND, SHIVAJINAGAR</text>
+<text x="320" y="512" font-family="${F}" font-size="30" font-weight="800" letter-spacing="-1" fill="#0A0A0C">₹799</text>
+<g>${BARCODE(320,534,110,30,'#0A0A0C')}</g>
+<rect x="0" y="646" width="600" height="154" fill="#0A0A0C"/>
+<text x="40" y="700" font-family="${FM}" font-size="10" letter-spacing="2.6" fill="#CCFF2E">NO CAP TOUR 2026</text>
+<text x="40" y="752" font-family="${F}" font-size="40" font-weight="800" letter-spacing="-1.6" fill="#FFFFFF">FIVE CITIES. FIVE NIGHTS.</text>
+<text x="40" y="778" font-family="${FM}" font-size="9" letter-spacing="2" fill="#7E8290">MUMBAI · DELHI · BANGALORE · JAMMU · PUNE</text>
+${g.use}
+</svg>`;})()
+},
+
+/* 7 ───────────────────────────────── MACHINE FLOW cover */
+{
+  id:'a7', cat:'covers', span:3, w:600, h:800,
+  title:'MACHINE FLOW — Album Cover',
+  client:'Machine Flow', year:'2026',
+  desc:'A vinyl-inspired cover for a beat tape: concentric grooves, a cut-out label and a catalogue spine that survives the streaming thumbnail.',
+  tags:['Album cover','Vinyl','Spine'],
+  svg:(()=>{ const g=GRAIN(600,800,.3);
+    const gl=RG([[0,'#CCFF2E',.16],[1,'#CCFF2E',0]],.5,.5,.5);
+    let rings='';
+    for(let i=0;i<16;i++){ const r=46+i*22; rings+='<circle cx="300" cy="330" r="'+r+'" fill="none" stroke="#FFFFFF" stroke-width="1" opacity="'+(.05+i*.012).toFixed(3)+'"/>'; }
+    return `<svg viewBox="0 0 600 800" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Machine Flow album cover">
+<defs>${gl.s}</defs>
+<rect width="600" height="800" fill="#0E0E13"/>
+<rect x="0" y="0" width="600" height="3" fill="#CCFF2E"/>
+<circle cx="300" cy="330" r="380" fill="url(#${gl.id})"/>
+${rings}
+<circle cx="300" cy="330" r="46" fill="#CCFF2E"/>
+<circle cx="300" cy="330" r="8" fill="#0E0E13"/>
+<text x="40" y="64" font-family="${FM}" font-size="10" letter-spacing="3" fill="#7E8290">MF-002 · BEAT TAPE</text>
+<text x="560" y="64" font-family="${FM}" font-size="10" letter-spacing="2" fill="#7E8290" text-anchor="end">2026</text>
+<text x="40" y="618" font-family="${F}" font-size="66" font-weight="800" letter-spacing="-2.8" fill="#FFFFFF">MACHINE</text>
+<text x="40" y="678" font-family="${F}" font-size="66" font-weight="800" letter-spacing="-2.8" fill="#CCFF2E">FLOW</text>
+<rect x="40" y="700" width="96" height="26" rx="13" fill="#FFFFFF" opacity=".1"/>
+<text x="88" y="717" font-family="${FM}" font-size="9" letter-spacing="1.6" fill="#FFFFFF" text-anchor="middle">12 TRACKS</text>
+<text x="150" y="717" font-family="${FM}" font-size="9" letter-spacing="1.6" fill="#7E8290">DIGITAL · VINYL · CASSETTE</text>
+<rect x="40" y="752" width="520" height="1" fill="#FFFFFF" opacity=".12"/>
+<text x="40" y="774" font-family="${FM}" font-size="9" letter-spacing="2" fill="#5C606C">DZYNSBYSOHAM — COVER ART &amp; SYSTEM</text>
+<text x="560" y="774" font-family="${FM}" font-size="9" letter-spacing="2" fill="#5C606C" text-anchor="end">MF-002</text>
+${g.use}
+</svg>`;})()
+},
+
+/* 8 ───────────────────────────────── YUNG SHER audio visual */
+{
+  id:'a8', cat:'thumbnails', span:6, w:800, h:450,
+  title:'YUNG SHER — "Mirchi" Official Audio Visual',
+  client:'Yung Sher', year:'2026',
+  desc:'A 16:9 audio visual for a single drop — waveform locked to the type baseline, a live portrait crop and a release stamp.',
+  tags:['Audio visual','Waveform','Portrait crop'],
+  svg:(()=>{ const bg=LG([[0,'#1A0E0A'],[1,'#0A0A0C']],110);
+    const gl=RG([[0,'#FF4F2E',.45],[1,'#FF4F2E',0]],.5,.5,.65);
+    const clip=U();
+    const g=GRAIN(800,450,.34);
+    return `<svg viewBox="0 0 800 450" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Yung Sher Mirchi official audio visual">
+<defs>${bg.s}${gl.s}<clipPath id="${clip}"><circle cx="640" cy="212" r="150"/></clipPath></defs>
+<rect width="800" height="450" fill="url(#${bg.id})"/>
+<circle cx="640" cy="212" r="230" fill="url(#${gl.id})"/>
+<g clip-path="url(#${clip})">
+  <rect x="490" y="62" width="300" height="300" fill="#241411"/>
+  <path d="${silPath(640,214,86)}" fill="#0A0A0C"/>
+  <path d="M572 148 A86 86 0 0 0 560 290" fill="none" stroke="#FF4F2E" stroke-width="5"/>
+</g>
+<circle cx="640" cy="212" r="150" fill="none" stroke="#FF4F2E" stroke-width="1.4" opacity=".6"/>
+<text x="40" y="60" font-family="${FM}" font-size="10" letter-spacing="2.6" fill="#FF4F2E">YUNG SHER — OFFICIAL AUDIO VISUAL</text>
+<text x="40" y="182" font-family="${F}" font-size="110" font-weight="800" letter-spacing="-5" fill="#FFFFFF">MIRCHI</text>
+<text x="40" y="232" font-family="${FM}" font-size="11" letter-spacing="3" fill="#9A7E76">SINGLE 04 — 2026</text>
+<g>${WAVEFORM(40,268,560,74,52,'#FF4F2E',3,.95)}</g>
+<g>${WAVEFORM(40,268,560,74,52,'#FFFFFF',3,.28)}</g>
+<rect x="40" y="368" width="146" height="28" rx="14" fill="#FF4F2E"/>
+<text x="113" y="386" font-family="${FM}" font-size="10" letter-spacing="1.8" fill="#0A0A0C" text-anchor="middle" font-weight="600">STREAM NOW</text>
+<text x="206" y="386" font-family="${FM}" font-size="10" letter-spacing="2" fill="#8A6E66">DZYNSBYSOHAM · ART DIRECTION</text>
+<rect x="0" y="424" width="800" height="26" fill="#FF4F2E" opacity=".12"/>
+<text x="40" y="442" font-family="${FM}" font-size="9" letter-spacing="2.2" fill="#8A6E66">16:9 MASTER · 3840×2160 · DELIVERED 04.11.26</text>
+${g.use}
+</svg>`;})()
+},
+
+/* 9 ───────────────────────────────── RZN mixtape poster */
+{
+  id:'a9', cat:'posters', span:3, w:600, h:800,
+  title:'RZN THE BOSS — Mixtape Drop Poster',
+  client:'RZN', year:'2026',
+  desc:'A mixtape announcement built around the cassette object: hand-drawn deck, printed tracklist, drop date and a scan-to-DM call to action.',
+  tags:['Mixtape','Object render','Tracklist'],
+  svg:(()=>{ const g=GRAIN(600,800,.3);
+    const tracks=['01  KALKI','02  RAAT','03  DABA','04  TRAPLINE','05  100 ML','06  PHIR','07  GULLY','08  RZN'];
+    let tl=''; tracks.forEach((t,i)=>{ tl+=T(44,470+i*30,t,{mono:true,s:11.5,ls:1,c:'#0A0A0C',w:i===0?600:400,op:i===0?1:.72}); });
+    return `<svg viewBox="0 0 600 800" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="RZN the Boss mixtape drop poster">
+<rect width="600" height="800" fill="#E7E1D2"/>
+<text x="44" y="58" font-family="${FM}" font-size="10" letter-spacing="3" fill="#0A0A0C">MIXTAPE 01 — DROP ANNOUNCEMENT</text>
+<text x="556" y="58" font-family="${FM}" font-size="10" letter-spacing="2" fill="#6B6353" text-anchor="end">RZN THE BOSS</text>
+<g transform="rotate(-4 300 250)">
+  <rect x="96" y="120" width="408" height="240" rx="10" fill="#1B1B1F"/>
+  <rect x="118" y="142" width="364" height="118" rx="6" fill="#F0EADC"/>
+  <circle cx="216" cy="201" r="38" fill="#E7E1D2" stroke="#1B1B1F" stroke-width="2"/>
+  <circle cx="216" cy="201" r="22" fill="none" stroke="#1B1B1F" stroke-width="1.4"/>
+  <circle cx="384" cy="201" r="38" fill="#E7E1D2" stroke="#1B1B1F" stroke-width="2"/>
+  <circle cx="384" cy="201" r="22" fill="none" stroke="#1B1B1F" stroke-width="1.4"/>
+  <rect x="256" y="186" width="88" height="30" rx="4" fill="#CCFF2E"/>
+  <text x="300" y="207" font-family="${FM}" font-size="11" letter-spacing="2" fill="#0A0A0C" text-anchor="middle" font-weight="600">SIDE A</text>
+  <rect x="118" y="276" width="364" height="66" fill="#0A0A0C"/>
+  <text x="300" y="316" font-family="${F}" font-size="30" font-weight="800" letter-spacing="-1" fill="#FFFFFF" text-anchor="middle">RZN THE BOSS</text>
+</g>
+<text x="44" y="420" font-family="${F}" font-size="76" font-weight="800" letter-spacing="-3.4" fill="#0A0A0C">MIXTAPE 01</text>
+<rect x="44" y="436" width="512" height="1.5" fill="#0A0A0C" opacity=".25"/>
+${tl}
+<rect x="44" y="716" width="150" height="30" rx="15" fill="#0A0A0C"/>
+<text x="119" y="735" font-family="${FM}" font-size="11" letter-spacing="1.8" fill="#CCFF2E" text-anchor="middle" font-weight="600">DROP 02.11</text>
+<text x="210" y="736" font-family="${FM}" font-size="10" letter-spacing="2" fill="#6B6353">DM @RZNTHEBOSS</text>
+<g>${BARCODE(470,716,86,30,'#0A0A0C')}</g>
+${g.use}
+</svg>`;})()
+},
+
+/* 10 ──────────────────────────────── DHH 001 thumbnail system */
+{
+  id:'a11', cat:'thumbnails', span:6, w:800, h:450,
+  title:'DHH 001 — Four-Part Thumbnail System',
+  client:'DHH', year:'2026',
+  desc:'Four thumbnails built as one system: same crop, same type slot, same badge — only the hook and the colour change. Shipped as a repeatable frame set.',
+  tags:['System','Consistency','Hooks'],
+  svg:(()=>{ const g=GRAIN(800,450,.32);
+    const hooks=[['LEVEL','UP','#CCFF2E'],['NO','FILTER','#FF4F2E'],['FIVE','STAR','#2B4CFF'],['ALL','NIGHT','#9B7BFF']];
+    let cells='';
+    hooks.forEach((h,i)=>{ const x=32+i*187, y=104, w=171, hgt=214;
+      cells+=D(x,y,w,hgt,'#14141A');
+      cells+=D(x,y,w,3,h[2]);
+      cells+=T(x+11,y+22,'DHH 001 · 0'+(i+1),{mono:true,s:7.5,ls:1.6,c:'#7E8290'});
+      cells+='<g opacity=".9">'+FIG(x+w-40,y+34,20,h[2])+'</g>';
+      cells+=D(x+11,y+92,w-22,96,h[2]);
+      cells+=T(x+22,y+130,h[0],{s:29,w:800,ls:-1.2,c:'#0A0A0C'});
+      cells+=T(x+22,y+162,h[1],{s:29,w:800,ls:-1.2,c:'#0A0A0C'});
+      cells+=T(x+22,y+180,'HOOK '+(i+1)+' · 16:9',{mono:true,s:7,ls:1.2,c:'#0A0A0C',op:.6});
+      cells+=CI(x+w-18,y+20,6,'#FFFFFF',{op:.35});
+      cells+=D(x,y,w,hgt,'none',{st:'#FFFFFF',sw:.8,op:.14});
+    });
+    return `<svg viewBox="0 0 800 450" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="DHH four part thumbnail system">
+<rect width="800" height="450" fill="#0A0A0C"/>
+<text x="32" y="48" font-family="${FM}" font-size="10" letter-spacing="2.6" fill="#CCFF2E">DHH 001 — THUMBNAIL SYSTEM</text>
+<text x="768" y="48" font-family="${FM}" font-size="10" letter-spacing="2" fill="#7E8290" text-anchor="end">4 FRAMES · 1 GRID · 1 CROP</text>
+${cells}
+<rect x="32" y="358" width="736" height="1" fill="#FFFFFF" opacity=".12"/>
+<text x="32" y="388" font-family="${FM}" font-size="9" letter-spacing="2.2" fill="#5C606C">SAME TYPE SLOT · SAME BADGE · SAME FRAME — HOOK AND COLOUR ONLY</text>
+<text x="32" y="414" font-family="${F}" font-size="22" font-weight="800" letter-spacing="-.4" fill="#FFFFFF">FOUR HOOKS, ONE RECOGNISABLE GRID.</text>
+<text x="768" y="414" font-family="${FM}" font-size="9" letter-spacing="2.2" fill="#5C606C" text-anchor="end">DZYNSBYSOHAM</text>
+${g.use}
+</svg>`;})()
+},
+
+/* 11 ──────────────────────────────── STREET TYPE specimen */
+{
+  id:'a10', cat:'typography', span:3, w:600, h:800,
+  title:'STREET TYPE — Poster Specimen Sheet',
+  client:'Type specimen', year:'2026',
+  desc:'A poster-scale type specimen: the display cut, a working size scale and a photocopy texture that shows how the family holds up on paper.',
+  tags:['Poster type','Scale test','Photocopy'],
+  svg:(()=>{ const g=GRAIN(600,800,.3);
+    const sizes=[['DISPLAY',66,'STREET'],['HEAD',42,'STREET TYPE'],['SUB',27,'ON THE WALL'],['BODY',17,'the quick brown fox jumps'],['CAPTION',11,'ALWAYS READS']];
+    let sc=''; sizes.forEach((s,i)=>{ const y=452+i*58;
+      sc+=T(44,y,s[2],{s:s[1],w:s[1]>30?800:500,ls:-s[1]*.035,c:'#0A0A0C',i:s[1]<=17});
+      sc+=T(556,y-5,s[0],{mono:true,s:9,ls:2,c:'#8A8F9C',a:'end'});
+      sc+=L(44,y+13,556,y+13,'#0A0A0C',1,{op:.12});
+    });
+    return `<svg viewBox="0 0 600 800" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Street type poster specimen sheet">
+<rect width="600" height="800" fill="#EDE8DA"/>
+<rect x="28" y="28" width="544" height="744" fill="none" stroke="#0A0A0C" stroke-width="1.2" opacity=".35"/>
+<text x="44" y="72" font-family="${FM}" font-size="10" letter-spacing="3" fill="#0A0A0C">STREET TYPE — SPECIMEN</text>
+<text x="556" y="72" font-family="${FM}" font-size="10" letter-spacing="2" fill="#7A7364" text-anchor="end">RISO / 2 COLOUR</text>
+<text x="44" y="286" font-family="${F}" font-size="172" font-weight="800" letter-spacing="-8" fill="#0A0A0C">STREET</text>
+<text x="44" y="378" font-family="${F}" font-size="172" font-weight="800" letter-spacing="-8" fill="none" stroke="#0A0A0C" stroke-width="2.4">TYPE</text>
+<rect x="44" y="298" width="286" height="13" fill="#FF4F2E" opacity=".92" transform="rotate(-1.4 187 305)"/>
+<text x="44" y="418" font-family="${FM}" font-size="9" letter-spacing="2.4" fill="#7A7364">WORKING SCALE</text>
+<rect x="44" y="430" width="512" height="1" fill="#0A0A0C" opacity=".25"/>
+${sc}
+<rect x="44" y="726" width="120" height="26" rx="13" fill="#0A0A0C"/>
+<text x="104" y="743" font-family="${FM}" font-size="10" letter-spacing="1.6" fill="#CCFF2E" text-anchor="middle" font-weight="600">RISO READY</text>
+<text x="180" y="744" font-family="${FM}" font-size="9" letter-spacing="2" fill="#7A7364">2 SPOT COLOURS · A3 · 3.2L</text>
+${g.use}
+</svg>`;})()
+},
+
+/* 12 ──────────────────────────────── KOT S visual system */
+{
+  id:'a12', cat:'identity', span:3, w:600, h:600,
+  title:'KOT S — Artist Visual System',
+  client:'Kot S', year:'2026',
+  desc:'A compact artist system: monogram, colour tokens, type pairing and a merch tag. Everything an artist needs to post consistently without asking again.',
+  tags:['Artist system','Colour tokens','Type pairing'],
+  svg:(()=>{ const g=GRAIN(600,600,.32);
+    return `<svg viewBox="0 0 600 600" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Kot S artist visual system">
+<rect width="600" height="600" fill="#0A0A0C"/>
+<text x="40" y="52" font-family="${FM}" font-size="10" letter-spacing="2.8" fill="#00E0A4">KOT S — VISUAL SYSTEM</text>
+<text x="560" y="52" font-family="${FM}" font-size="10" letter-spacing="2" fill="#5F6A66" text-anchor="end">V1.2 / 2026</text>
+<rect x="40" y="80" width="250" height="230" fill="#141416" stroke="#FFFFFF" stroke-opacity=".12"/>
+<text x="165" y="212" font-family="${F}" font-size="118" font-weight="800" letter-spacing="-6" fill="#FFFFFF" text-anchor="middle">KS</text>
+<rect x="46" y="86" width="8" height="8" fill="#00E0A4"/>
+<text x="310" y="112" font-family="${FM}" font-size="9" letter-spacing="2" fill="#5F6A66">COLOUR TOKENS</text>
+${['#00E0A4','#CCFF2E','#FF4F2E','#2B4CFF','#F3F1EA'].map((c,i)=>D(310,124+i*30,26,26,c,{rx:5})).join('')}
+${['#00E0A4','#CCFF2E','#FF4F2E','#2B4CFF','#F3F1EA'].map((c,i)=>T(346,142+i*30,c,{mono:true,s:9,ls:1.4,c:'#8A9490'})).join('')}
+<text x="310" y="300" font-family="${FM}" font-size="9" letter-spacing="2" fill="#5F6A66">TYPE PAIRING</text>
+<text x="310" y="342" font-family="${F}" font-size="42" font-weight="800" letter-spacing="-1.6" fill="#FFFFFF">KOT S</text>
+<text x="310" y="370" font-family="${FI}" font-size="15" letter-spacing=".4" fill="#9AA4A0">grotesk display + neutral caption</text>
+<rect x="40" y="330" width="250" height="1.2" fill="#FFFFFF" opacity=".14"/>
+<text x="40" y="358" font-family="${FM}" font-size="9" letter-spacing="2" fill="#5F6A66">MONOGRAM RULES</text>
+<text x="40" y="392" font-family="${FI}" font-size="14" fill="#9AA4A0">Never outline. Never add a shadow.</text>
+<text x="40" y="414" font-family="${FI}" font-size="14" fill="#9AA4A0">One accent colour per surface.</text>
+<rect x="40" y="452" width="520" height="108" rx="10" fill="#F3F1EA"/>
+<text x="60" y="500" font-family="${F}" font-size="30" font-weight="800" letter-spacing="-1.2" fill="#0A0A0C">KOT S</text>
+<text x="60" y="524" font-family="${FM}" font-size="9" letter-spacing="2.4" fill="#6B6B66">MERCH TAG · 70 × 40 MM</text>
+<circle cx="470" cy="506" r="36" fill="#00E0A4"/>
+<path d="M456 494 L468 494 L468 506 L480 506 L480 518 L468 518 L468 530 L456 530" fill="none" stroke="#0A0A0C" stroke-width="3.5"/>
+${g.use}
+</svg>`;})()
+}
+,
+{
+  id:'n10', cat:'digital', span:9, w:800, h:450,
+  title:'MC VAJ — Instagram Grid System (Nine Posts)',
+  client:'MC VAJ', year:'2026',
+  desc:'Nine posts built as one artwork: three covers, three drops and three stories share a single safe area, so the profile reads as a designed wall instead of nine random squares.',
+  tags:['Grid system','Social','Safe area'],
+  svg:(()=>{ const g=GRAIN(800,450,.32);
+    const posts=[
+      {w:['GULLY','LOOP'],c:'#CCFF2E',bg:'#0F0F14',t:'#CCFF2E',k:'01 · COVER'},
+      {w:['OUT','02.11'],c:'#2B4CFF',bg:'#0F0F14',t:'#FFFFFF',k:'02 · DROP'},
+      {w:['MC','VAJ'],c:'#FF4F2E',bg:'#F3F1EA',t:'#0A0A0C',k:'03 · ARTIST'},
+      {w:['14','TRACKS'],c:'#00E0A4',bg:'#0F0F14',t:'#FFFFFF',k:'04 · ALBUM'},
+      {w:['SIDE','B'],c:'#9B7BFF',bg:'#F3F1EA',t:'#0A0A0C',k:'05 · FORMAT'},
+      {w:['OUT','NOW'],c:'#CCFF2E',bg:'#CCFF2E',t:'#0A0A0C',k:'06 · RELEASE'},
+      {w:['LISTEN','LOUD'],c:'#2B4CFF',bg:'#0F0F14',t:'#FFFFFF',k:'07 · PUSH'},
+      {w:['EP','ONE'],c:'#FF4F2E',bg:'#0F0F14',t:'#FFFFFF',k:'08 · STORY'},
+      {w:['VAJ','2026'],c:'#00E0A4',bg:'#0F0F14',t:'#00E0A4',k:'09 · CLOSE'}
+    ];
+    let grid='';
+    posts.forEach((p,i)=>{ const col=i%3, row=(i/3)|0, x=40+col*124, y=74+row*124, s=114;
+      grid+=D(x,y,s,s,p.bg);
+      grid+=D(x,y,s,4,p.c);
+      grid+=T(x+9,y+24,p.k,{mono:true,s:6.5,ls:1.1,c:p.t,op:.75});
+      grid+=T(x+9,y+66,p.w[0],{s:21,w:800,ls:-.7,c:p.t});
+      grid+=T(x+9,y+86,p.w[1],{s:21,w:800,ls:-.7,c:p.t});
+      grid+=L(x+9,y+96,x+s-9,y+96,p.t,1,{op:.3});
+      grid+='<g opacity=".85">'+FIG(x+s-30,y+34,13,p.c)+'</g>';
+    });
+    let rules='';
+    ['ONE SAFE AREA — 1080 × 1080','THREE COLOURS MAX PER POST','TYPE SLOT LOCKED TO TOP THIRD','POSTED IN ORDER — GRID IS THE ART']
+      .forEach((r,i)=>{ const y=130+i*54;
+        rules+=D(452,y-9,14,3,'#CCFF2E');
+        rules+=T(478,y,r,{mono:true,s:10,ls:1.3,c:'#C2C2CC'});
+      });
+    return `<svg viewBox="0 0 800 450" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="MC VAJ nine post Instagram grid system">
+<rect width="800" height="450" fill="#0A0A0C"/>
+<text x="40" y="44" font-family="${FM}" font-size="10" letter-spacing="2.6" fill="#9B7BFF">MC VAJ — INSTAGRAM GRID SYSTEM</text>
+<text x="760" y="44" font-family="${FM}" font-size="10" letter-spacing="2" fill="#6E7280" text-anchor="end">9 POSTS · 3 × 3 · 1080²</text>
+${grid}
+<rect x="440" y="92" width="1" height="272" fill="#FFFFFF" opacity=".12"/>
+${rules}
+<text x="452" y="352" font-family="${FM}" font-size="9" letter-spacing="1.8" fill="#5C606C">PALETTE</text>
+${['#CCFF2E','#2B4CFF','#FF4F2E','#9B7BFF','#00E0A4'].map((c,i)=>D(452+i*32,362,24,24,c,{rx:5})).join('')}
+<text x="452" y="412" font-family="${F}" font-size="20" font-weight="800" letter-spacing="-.4" fill="#FFFFFF">THE PROFILE IS THE POSTER.</text>
+<text x="760" y="412" font-family="${FM}" font-size="9" letter-spacing="2" fill="#5C606C" text-anchor="end">DZYNSBYSOHAM</text>
+${g.use}
+</svg>`;})()
+},
+
+
+/* 13 ──────────────────────────────── MC VAJ carousel */
+{
+  id:'n1', cat:'digital', span:6, w:800, h:450,
+  title:'MC VAJ — Six-Slide Instagram Carousel',
+  client:'MC VAJ', year:'2026',
+  desc:'A six-frame carousel system: cover, context, three track cards and a close. Every frame shares the same safe area so the swipe never breaks the grid.',
+  tags:['Carousel','Social system','Safe area'],
+  svg:(()=>{ const g=GRAIN(800,450,.32);
+    const slides=[
+      {n:'01',k:['GULLY','LOOP'],s:'COVER',c:'#CCFF2E',bg:'#0F0F14',t:'#CCFF2E'},
+      {n:'02',k:['OUT','02.11'],s:'SINGLE 02',c:'#2B4CFF',bg:'#0F0F14',t:'#FFFFFF'},
+      {n:'03',k:['MC','VAJ'],s:'ARTIST',c:'#FF4F2E',bg:'#F3F1EA',t:'#0A0A0C'},
+      {n:'04',k:['14','TRACKS'],s:'ALBUM',c:'#00E0A4',bg:'#0F0F14',t:'#FFFFFF'},
+      {n:'05',k:['IN','STORES'],s:'FORMAT',c:'#9B7BFF',bg:'#F3F1EA',t:'#0A0A0C'},
+      {n:'06',k:['LINK IN','BIO'],s:'CTA',c:'#CCFF2E',bg:'#0F0F14',t:'#FFFFFF'}
+    ];
+    let ph='';
+    slides.forEach((sl,i)=>{ const x=40+i*124, y=78, w=112, h=214;
+      ph+=D(x-4,y-4,w+8,h+8,'#000000',{rx:16});
+      ph+=D(x,y,w,h,sl.bg,{rx:12});
+      ph+=D(x,y,w,4,sl.c);
+      ph+=T(x+10,y+26,sl.n,{mono:true,s:9,ls:1.4,c:sl.t,op:.7});
+      ph+=T(x+10,y+70,sl.k[0],{s:21,w:800,ls:-.6,c:sl.t});
+      ph+=T(x+10,y+92,sl.k[1],{s:21,w:800,ls:-.6,c:sl.t});
+      ph+=L(x+10,y+108,x+w-10,y+108,sl.t,1,{op:.28});
+      ph+='<g opacity=".92">'+FIG(x+w/2,y+128,20,sl.c)+'</g>';
+      ph+=T(x+10,y+h-12,sl.s,{mono:true,s:7,ls:1.3,c:sl.t,op:.6});
+    });
+    return `<svg viewBox="0 0 800 450" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="MC VAJ six slide carousel">
+<rect width="800" height="450" fill="#0A0A0C"/>
+<text x="40" y="44" font-family="${FM}" font-size="10" letter-spacing="2.6" fill="#9B7BFF">MC VAJ — INSTAGRAM CAROUSEL</text>
+<text x="764" y="44" font-family="${FM}" font-size="10" letter-spacing="2" fill="#6E7280" text-anchor="end">6 FRAMES · 1080×1350</text>
+${ph}
+<rect x="40" y="326" width="720" height="1" fill="#FFFFFF" opacity=".12"/>
+<text x="40" y="368" font-family="${F}" font-size="38" font-weight="800" letter-spacing="-1.6" fill="#FFFFFF">ONE SWIPE, ONE STORY.</text>
+<text x="40" y="396" font-family="${FM}" font-size="10" letter-spacing="2" fill="#7E8290">SAFE AREA 1080×1350 · TYPE SLOT LOCKED · HOOK ON FRAME 01</text>
+<text x="40" y="424" font-family="${FM}" font-size="9" letter-spacing="2.2" fill="#5C606C">DELIVERED: PSD + 6× PNG + CAPTION COPY</text>
+<text x="764" y="424" font-family="${FM}" font-size="9" letter-spacing="2.2" fill="#5C606C" text-anchor="end">DZYNSBYSOHAM</text>
+${g.use}
+</svg>`;})()
+},
+
+/* 14 ──────────────────────────────── motion keyframes */
+{
+  id:'n2', cat:'digital', span:6, w:800, h:450,
+  title:'GULLY LOOP — Motion Keyframes',
+  client:'MC VAJ', year:'2026',
+  desc:'Three keyframes from the loop animation with timecodes and the easing curve, delivered to the editor as a movement spec.',
+  tags:['Motion spec','Keyframes','Easing'],
+  svg:(()=>{ const g=GRAIN(800,450,.32);
+    const frames=[{t:'00:00',k:'01',s:1.00,a:0},{t:'00:04',k:'02',s:.86,a:.5},{t:'00:08',k:'03',s:.72,a:1}];
+    let cells='';
+    frames.forEach((f,i)=>{ const x=40+i*244, y=76, w=232, h=208;
+      cells+=D(x,y,w,h,'#12121A');
+      cells+=D(x,y,w,3,'#CCFF2E');
+      const cx=x+w/2, cy=y+h/2+4, k=f.s;
+      cells+='<g transform="translate('+cx+' '+cy+') scale('+k+') translate('+(-cx)+' '+(-cy)+')">';
+      cells+=D(x+16,y+30,200,148,'#1B1B26');
+      cells+=D(x+132,y+30,84,148,'#2B4CFF');
+      cells+=CI(x+174,y+86,30,'#CCFF2E',{op:.2});
+      cells+=T(x+30,y+96,'GULLY',{s:30,w:800,ls:-1.2,c:'#FFFFFF'});
+      cells+=T(x+30,y+124,'LOOP',{s:30,w:800,ls:-1.2,c:'#CCFF2E'});
+      cells+='<g opacity=".9">'+FIG(x+174,y+64,22,'#0A0A0C')+'</g>';
+      cells+='</g>';
+      cells+=L(x+14,y+h-34,x+w-14,y+h-34,'#FFFFFF',1,{op:.14});
+      cells+=T(x+14,y+h-14,'0'+f.k+'   '+f.t,{mono:true,s:9,ls:1.8,c:'#7E8290'});
+      cells+=T(x+w-14,y+h-14,'SCALE '+Math.round(f.s*100)+'%',{mono:true,s:8,ls:1.2,c:'#5C606C',a:'end'});
+    });
+    let curve='';
+    for(let i=0;i<=44;i++){ const t=i/44, e=1-Math.pow(1-t,3);
+      curve+='<circle cx="'+(44+t*712)+'" cy="'+(404-e*44)+'" r="2.1" fill="#CCFF2E"/>'; }
+    curve+='<path d="M44 404 C 320 404 540 348 756 360" fill="none" stroke="#CCFF2E" stroke-width="1.4" opacity=".5"/>';
+    return `<svg viewBox="0 0 800 450" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Gully Loop motion keyframes">
+<rect width="800" height="450" fill="#0A0A0C"/>
+<text x="40" y="44" font-family="${FM}" font-size="10" letter-spacing="2.6" fill="#CCFF2E">GULLY LOOP — LOOP ANIMATION</text>
+<text x="764" y="44" font-family="${FM}" font-size="10" letter-spacing="2" fill="#6E7280" text-anchor="end">3 KEYFRAMES · 8 SEC</text>
+${cells}
+<text x="44" y="348" font-family="${FM}" font-size="9" letter-spacing="2" fill="#5C606C">EASE — CUBIC OUT (0.33, 1, 0.68, 1)</text>
+${curve}
+<text x="44" y="436" font-family="${FM}" font-size="9" letter-spacing="2.2" fill="#5C606C">DELIVERED: MP4 · 1920×1080 · ALPHA CHANNEL · 2 LOOPS</text>
+<text x="764" y="436" font-family="${FM}" font-size="9" letter-spacing="2.2" fill="#5C606C" text-anchor="end">DZYNSBYSOHAM</text>
+${g.use}
+</svg>`;})()
+},
+
+/* 15 ──────────────────────────────── THE SCENE editorial */
+{
+  id:'n3', cat:'editorial', span:6, w:800, h:450,
+  title:'THE SCENE — Magazine Cover & Feature Spread',
+  client:'The Scene', year:'2026',
+  desc:'A print feature for a rap monthly: masthead, cover lines, a byline and a two-column spread set on a real baseline grid.',
+  tags:['Editorial','Baseline grid','Print'],
+  svg:(()=>{ const g=GRAIN(800,450,.3);
+    const bars=(x,y,w,n,step,last)=>{ let s=''; for(let i=0;i<n;i++){ const bw=w*(.55+((i*37)%40)/100);
+      s+=D(x,y+i*step,bw,2.4,'#0A0A0C',{op:.24}); } return s; };
+    return `<svg viewBox="0 0 800 450" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="The Scene magazine cover and feature spread">
+<rect width="800" height="450" fill="#DCD8CC"/>
+<g transform="translate(36,32)">
+  <rect x="0" y="0" width="228" height="386" fill="#0A0A0C"/>
+  <text x="14" y="40" font-family="${F}" font-size="24" font-weight="800" letter-spacing="-.8" fill="#FFFFFF">THE SCENE</text>
+  <text x="214" y="38" font-family="${FM}" font-size="7.5" letter-spacing="1.4" fill="#7E8290" text-anchor="end">ISSUE 04</text>
+  <rect x="14" y="52" width="200" height="1" fill="#FFFFFF" opacity=".28"/>
+  <path d="${silPath(114,206,44)}" fill="#CCFF2E"/>
+  <text x="14" y="292" font-family="${F}" font-size="30" font-weight="800" letter-spacing="-1" fill="#FFFFFF">THE</text>
+  <text x="14" y="324" font-family="${F}" font-size="30" font-weight="800" letter-spacing="-1" fill="#FFFFFF">REVOLUTION</text>
+  <text x="14" y="356" font-family="${F}" font-size="30" font-weight="800" letter-spacing="-1" fill="#CCFF2E">OF SOUND</text>
+  <text x="14" y="376" font-family="${FM}" font-size="7" letter-spacing="1.2" fill="#B9BAC0">WORDS — A. RAO · 12 MIN</text>
+</g>
+<g transform="translate(288,32)">
+  <rect x="0" y="0" width="440" height="386" fill="#F3F1EA"/>
+  <rect x="0" y="0" width="1" height="386" fill="#0A0A0C" opacity=".18"/>
+  <text x="26" y="38" font-family="${FM}" font-size="7.5" letter-spacing="1.6" fill="#8A8F9C">FEATURE · PAGE 22</text>
+  <text x="26" y="80" font-family="${F}" font-size="30" font-weight="800" letter-spacing="-1.2" fill="#0A0A0C">THE ART OF</text>
+  <text x="26" y="114" font-family="${F}" font-size="30" font-weight="800" letter-spacing="-1.2" fill="#0A0A0C">THE THUMBNAIL</text>
+  <text x="26" y="140" font-family="${FI}" font-size="10.5" fill="#6B6B66">By Aditi Rao · Photography by Fenech Crew</text>
+  <rect x="26" y="156" width="388" height="1.2" fill="#0A0A0C" opacity=".32"/>
+  ${bars(26,178,150,12,11)}
+  <rect x="202" y="170" width="212" height="140" fill="#0A0A0C"/>
+  <text x="218" y="202" font-family="${F}" font-size="14" font-weight="800" letter-spacing="-.2" fill="#CCFF2E">01 — THE HOOK</text>
+  <text x="218" y="226" font-family="${FI}" font-size="9.5" fill="#9A9AA6">One second, one face, one</text>
+  <text x="218" y="240" font-family="${FI}" font-size="9.5" fill="#9A9AA6">word. Everything else is</text>
+  <text x="218" y="254" font-family="${FI}" font-size="9.5" fill="#9A9AA6">decoration — and decoration</text>
+  <text x="218" y="268" font-family="${FI}" font-size="9.5" fill="#9A9AA6">is what the feed scrolls past.</text>
+  <rect x="218" y="284" width="60" height="3" fill="#CCFF2E"/>
+  <text x="202" y="336" font-family="${FM}" font-size="7.5" letter-spacing="1.4" fill="#8A8F9C">12-POINT BASELINE · 2 COLUMNS · 1 PULL QUOTE</text>
+  ${bars(26,322,150,3,11)}
+  <rect x="26" y="360" width="388" height="1" fill="#0A0A0C" opacity=".22"/>
+  <text x="26" y="378" font-family="${FM}" font-size="7.5" letter-spacing="1.4" fill="#8A8F9C">THE SCENE · MONTHLY · MUMBAI · ISSUE 04</text>
+</g>
+${g.use}
+</svg>`;})()
+},
+
+/* 16 ──────────────────────────────── GULLY packaging */
+{
+  id:'n4', cat:'objects', span:6, w:800, h:450,
+  title:'GULLY — Energy Drink Packaging System',
+  client:'Gully Loop Co.', year:'2026',
+  desc:'A can, a carton and a flat label sheet for a lime-yuzu energy drink. The mark, the flavour code and the legal panel are all built to survive print.',
+  tags:['Packaging','Can render','Print ready'],
+  svg:(()=>{ const g=GRAIN(800,450,.32);
+    const can=LG([[0,'#0F2A1E'],[.34,'#00E0A4'],[.55,'#CCFF2E'],[1,'#0F2A1E']],0);
+    return `<svg viewBox="0 0 800 450" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Gully energy drink packaging system">
+<defs>${can.s}</defs>
+<rect width="800" height="450" fill="#0A0A0C"/>
+<text x="36" y="48" font-family="${FM}" font-size="10" letter-spacing="2.6" fill="#00E0A4">GULLY — PACKAGING SYSTEM</text>
+<text x="764" y="48" font-family="${FM}" font-size="10" letter-spacing="2" fill="#6E7280" text-anchor="end">250 ML · 4-PACK</text>
+<g transform="translate(96,86)">
+  <ellipse cx="70" cy="0" rx="70" ry="16" fill="#C9CCD6"/>
+  <ellipse cx="70" cy="4" rx="60" ry="12" fill="#8A90A6"/>
+  <path d="M0 4 A70 16 0 0 0 140 4 L140 258 A70 16 0 0 1 0 258 Z" fill="url(#${can.id})"/>
+  <ellipse cx="70" cy="258" rx="70" ry="16" fill="#0C2A20"/>
+  <path d="M22 60 L118 60 L118 74 L22 74 Z" fill="#0A0A0C" opacity=".85"/>
+  <text x="70" y="72" font-family="${FM}" font-size="8" letter-spacing="1.6" fill="#CCFF2E" text-anchor="middle">LIME + YUZU</text>
+  <text x="70" y="176" font-family="${F}" font-size="60" font-weight="800" letter-spacing="-3" fill="#0A0A0C" text-anchor="middle">GULLY</text>
+  <text x="70" y="200" font-family="${FM}" font-size="9" letter-spacing="2.4" fill="#0A0A0C" text-anchor="middle" opacity=".7">ENERGY · 250ML</text>
+  <path d="M40 222 L100 222" stroke="#0A0A0C" stroke-width="1.2" opacity=".4"/>
+</g>
+<g transform="translate(286,118)">
+  <path d="M0 0 L176 0 L196 26 L196 218 L0 218 Z" fill="#123B2C"/>
+  <path d="M0 0 L176 0 L196 26 L20 26 Z" fill="#0C2A20"/>
+  <text x="98" y="110" font-family="${F}" font-size="40" font-weight="800" letter-spacing="-2" fill="#CCFF2E" text-anchor="middle">GULLY</text>
+  <text x="98" y="132" font-family="${FM}" font-size="8" letter-spacing="2" fill="#7FE9C4" text-anchor="middle">4 × 250 ML</text>
+  <rect x="24" y="152" width="148" height="44" fill="#00E0A4" opacity=".14"/>
+  <text x="98" y="170" font-family="${FM}" font-size="7" letter-spacing="1.4" fill="#9FE9CF" text-anchor="middle">NO ARTIFICIAL COLOURS</text>
+  <text x="98" y="184" font-family="${FM}" font-size="7" letter-spacing="1.4" fill="#9FE9CF" text-anchor="middle">CAFFEINE 160MG · 4 CANS</text>
+  <text x="98" y="204" font-family="${FM}" font-size="6" letter-spacing="1" fill="#5E8C7A" text-anchor="middle">FSSAI LIC. NO. 10021064001367</text>
+</g>
+<g transform="translate(540,110)">
+  <rect x="0" y="0" width="220" height="230" fill="#F3F1EA"/>
+  <rect x="16" y="16" width="188" height="120" fill="#0A0A0C"/>
+  <text x="110" y="92" font-family="${F}" font-size="40" font-weight="800" letter-spacing="-2" fill="#CCFF2E" text-anchor="middle">GULLY</text>
+  <text x="24" y="158" font-family="${FM}" font-size="7" letter-spacing="1.2" fill="#0A0A0C">LABEL SHEET · 4 COLOUR</text>
+  ${[0,1,2,3,4].map(i=>D(24,168+i*11,60+((i*53)%100),3,'#0A0A0C',{op:.3})).join('')}
+  <rect x="24" y="226" width="14" height="14" fill="#FF4F2E"/>
+  <text x="44" y="237" font-family="${FM}" font-size="7" letter-spacing="1" fill="#0A0A0C">PANTONE 802 C</text>
+</g>
+${g.use}
+</svg>`;})()
+},
+
+/* 17 ──────────────────────────────── KOT S merch */
+{
+  id:'n5', cat:'objects', span:6, w:800, h:450,
+  title:'KOT S — Merch Drop (Tee / Cap / Stickers)',
+  client:'Kot S', year:'2026',
+  desc:'A merch drop rendered as a product sheet: tee, cap and sticker sheet, each carrying the same monogram at the right scale for its surface.',
+  tags:['Merch','Product sheet','Scale'],
+  svg:(()=>{ const g=GRAIN(800,450,.32);
+    return `<svg viewBox="0 0 800 450" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Kot S merch drop product sheet">
+<rect width="800" height="450" fill="#0A0A0C"/>
+<text x="40" y="46" font-family="${FM}" font-size="10" letter-spacing="2.6" fill="#00E0A4">KOT S — MERCH DROP 01</text>
+<text x="764" y="46" font-family="${FM}" font-size="10" letter-spacing="2" fill="#6E7280" text-anchor="end">TEE · CAP · STICKERS</text>
+<g transform="translate(56,86)">
+  <path d="M70 12 L118 12 L168 38 L146 66 L132 56 L132 218 L8 218 L8 56 L-6 66 L-28 38 L22 12 Z" fill="#F3F1EA"/>
+  <path d="M70 12 L44 26 C50 46 90 46 96 26 Z" fill="#DDD8CB"/>
+  <text x="70" y="108" font-family="${F}" font-size="44" font-weight="800" letter-spacing="-2" fill="#0A0A0C" text-anchor="middle">KS</text>
+  <text x="70" y="130" font-family="${FM}" font-size="8" letter-spacing="2.4" fill="#6B6B66" text-anchor="middle">KOT S</text>
+  <text x="70" y="240" font-family="${FM}" font-size="8" letter-spacing="1.6" fill="#5C606C" text-anchor="middle">HEAVY COTTON TEE</text>
+  <text x="70" y="256" font-family="${FM}" font-size="8" letter-spacing="1.6" fill="#5C606C" text-anchor="middle">220 GSM · BOXED</text>
+</g>
+<g transform="translate(268,132)">
+  <path d="M18 96 C18 46 62 18 112 18 C162 18 206 46 206 96 Z" fill="#0F3D2C"/>
+  <path d="M112 18 C142 18 170 26 190 42 L206 96 L150 96 C132 84 118 50 112 18 Z" fill="#0B2E21"/>
+  <path d="M206 96 C246 96 268 104 268 114 C240 128 194 130 158 126 L150 96 Z" fill="#0C3325"/>
+  <path d="M62 40 C86 30 138 30 162 40" fill="none" stroke="#0B2E21" stroke-width="1.2" opacity=".6"/>
+  <circle cx="112" cy="18" r="7" fill="#00E0A4"/>
+  <text x="104" y="74" font-family="${F}" font-size="34" font-weight="800" letter-spacing="-1.4" fill="#00E0A4" text-anchor="middle">KS</text>
+  <text x="120" y="160" font-family="${FM}" font-size="8" letter-spacing="1.6" fill="#5C606C" text-anchor="middle">6-PANEL CAP</text>
+  <text x="120" y="176" font-family="${FM}" font-size="8" letter-spacing="1.6" fill="#5C606C" text-anchor="middle">EMBROIDERED MARK</text>
+</g>
+<g transform="translate(568,104)">
+  <rect x="0" y="0" width="196" height="204" fill="#141416" stroke="#FFFFFF" stroke-opacity=".12"/>
+  <circle cx="60" cy="60" r="42" fill="#00E0A4"/>
+  <text x="60" y="68" font-family="${F}" font-size="30" font-weight="800" letter-spacing="-1" fill="#0A0A0C" text-anchor="middle">KS</text>
+  <rect x="110" y="28" width="58" height="58" rx="8" fill="#CCFF2E"/>
+  <text x="139" y="64" font-family="${F}" font-size="23" font-weight="800" letter-spacing="-.8" fill="#0A0A0C" text-anchor="middle">KOT</text>
+  <path d="M26 124 L94 124 L94 170 L26 170 Z" fill="#FF4F2E"/>
+  <text x="60" y="154" font-family="${F}" font-size="21" font-weight="800" fill="#0A0A0C" text-anchor="middle">KOT S</text>
+  <text x="98" y="238" font-family="${FM}" font-size="8" letter-spacing="1.6" fill="#5C606C" text-anchor="middle">STICKER SHEET</text>
+</g>
+<rect x="40" y="390" width="720" height="1" fill="#FFFFFF" opacity=".12"/>
+<text x="40" y="420" font-family="${FM}" font-size="9" letter-spacing="2.2" fill="#5C606C">MARK SCALE: 70MM TEE · 40MM CAP · 30–60MM STICKERS</text>
+<text x="764" y="420" font-family="${FM}" font-size="9" letter-spacing="2.2" fill="#5C606C" text-anchor="end">DZYNSBYSOHAM</text>
+${g.use}
+</svg>`;})()
+},
+
+/* 18 ──────────────────────────────── GULLY FEST identity */
+{
+  id:'n6', cat:'identity', span:6, w:800, h:450,
+  title:'GULLY FEST — Event Identity & Campaign',
+  client:'Gully Fest', year:'2026',
+  desc:'One festival, four surfaces: poster, social tile, wristband and entry pass. A single grid and one loud wordmark carry all four.',
+  tags:['Event identity','Multi-surface','One grid'],
+  svg:(()=>{ const g=GRAIN(800,450,.32);
+    return `<svg viewBox="0 0 800 450" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Gully Fest event identity system">
+<rect width="800" height="450" fill="#0A0A0C"/>
+<text x="36" y="48" font-family="${FM}" font-size="10" letter-spacing="2.6" fill="#CCFF2E">GULLY FEST — EVENT IDENTITY</text>
+<text x="764" y="48" font-family="${FM}" font-size="10" letter-spacing="2" fill="#6E7280" text-anchor="end">4 SURFACES · 1 GRID</text>
+<g transform="translate(36,84)">
+  <rect x="0" y="0" width="176" height="248" fill="#CCFF2E"/>
+  <text x="14" y="30" font-family="${FM}" font-size="8" letter-spacing="1.8" fill="#0A0A0C">03—04 OCT</text>
+  <text x="14" y="108" font-family="${F}" font-size="52" font-weight="800" letter-spacing="-2.4" fill="#0A0A0C">GULLY</text>
+  <text x="14" y="156" font-family="${F}" font-size="52" font-weight="800" letter-spacing="-2.4" fill="#0A0A0C">FEST</text>
+  <rect x="14" y="176" width="148" height="1.4" fill="#0A0A0C"/>
+  <text x="14" y="198" font-family="${FM}" font-size="8" letter-spacing="1.4" fill="#0A0A0C">BKC GROUND, MUMBAI</text>
+  <text x="14" y="222" font-family="${FM}" font-size="8" letter-spacing="1.4" fill="#0A0A0C">12 ARTISTS · 2 STAGES</text>
+</g>
+<g transform="translate(232,84)">
+  <rect x="0" y="0" width="176" height="176" fill="#17171C" stroke="#FFFFFF" stroke-opacity=".12"/>
+  <path d="${silPath(88,84,34)}" fill="#CCFF2E"/>
+  <text x="14" y="150" font-family="${F}" font-size="24" font-weight="800" letter-spacing="-1" fill="#FFFFFF">GULLY FEST</text>
+  <text x="14" y="164" font-family="${FM}" font-size="7" letter-spacing="1.4" fill="#7E8290">SOCIAL TILE · 1080×1080</text>
+</g>
+<g transform="translate(432,110)">
+  <rect x="0" y="0" width="290" height="42" rx="21" fill="#CCFF2E"/>
+  <text x="145" y="27" font-family="${F}" font-size="19" font-weight="800" letter-spacing="-.6" fill="#0A0A0C" text-anchor="middle">GULLY FEST</text>
+  <text x="20" y="66" font-family="${FM}" font-size="8" letter-spacing="1.6" fill="#6E7280">WRISTBAND · TICKETED ENTRY</text>
+</g>
+<g transform="translate(432,196)">
+  <rect x="0" y="0" width="290" height="136" rx="8" fill="#F3F1EA"/>
+  <rect x="0" y="0" width="8" height="136" fill="#CCFF2E"/>
+  <text x="26" y="34" font-family="${F}" font-size="26" font-weight="800" letter-spacing="-1" fill="#0A0A0C">GULLY FEST</text>
+  <text x="26" y="52" font-family="${FM}" font-size="7" letter-spacing="1.6" fill="#8A8F9C">03—04 OCT · BKC GROUND</text>
+  <text x="26" y="92" font-family="${FM}" font-size="8" letter-spacing="1.2" fill="#0A0A0C">GA · 0231 · GEN ADMIT</text>
+  ${BARCODE(26,104,110,22,'#0A0A0C')}
+  <text x="264" y="94" font-family="${F}" font-size="22" font-weight="800" fill="#0A0A0C" text-anchor="end">₹1,499</text>
+</g>
+${g.use}
+</svg>`;})()
+},
+
+/* 19 ──────────────────────────────── NO CAP tour series */
+{
+  id:'n7', cat:'posters', span:6, w:800, h:450,
+  title:'NO CAP TOUR — Five-City Announcement Series',
+  client:'NO CAP', year:'2026',
+  desc:'Five city announcements released as one series — identical frame, one accent colour per city, so the set reads as a system the moment they land together.',
+  tags:['Series','City system','Announcement'],
+  svg:(()=>{ const g=GRAIN(800,450,.32);
+    const cities=[['MUMBAI','03 OCT','#CCFF2E'],['DELHI','10 OCT','#FF4F2E'],['BANGALORE','17 OCT','#2B4CFF'],['JAMMU','24 OCT','#9B7BFF'],['PUNE','31 OCT','#00E0A4']];
+    let col='';
+    cities.forEach((c,i)=>{ const x=36+i*148, y=96, w=132, h=186;
+      col+=D(x,y,w,h,'#0A0A0C',{st:'#FFFFFF',sw:1,op:.14});
+      col+=D(x,y,w,4,c[2]);
+      col+=T(x+12,y+32,'0'+(i+1),{mono:true,s:8,ls:1.6,c:'#5C606C'});
+      col+=T(x+12,y+76,c[0].split(' ')[0],{s:30,w:800,ls:-1.2,c:'#FFFFFF'});
+      if(c[0].includes(' ')) col+=T(x+12,y+104,c[0].split(' ')[1],{s:30,w:800,ls:-1.2,c:c[2]});
+      col+=L(x+12,y+126,x+w-12,y+126,c[2],1.4);
+      col+=T(x+12,y+146,c[1],{mono:true,s:9,ls:1.8,c:'#7E8290'});
+      col+=T(x+12,y+170,'NO CAP TOUR',{mono:true,s:7,ls:1.4,c:'#5C606C'});
+    });
+    return `<svg viewBox="0 0 800 450" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="No Cap tour five city announcement series">
+<rect width="800" height="450" fill="#0A0A0C"/>
+<text x="36" y="48" font-family="${FM}" font-size="10" letter-spacing="2.6" fill="#CCFF2E">NO CAP TOUR — 5-CITY ANNOUNCEMENT SERIES</text>
+<text x="764" y="48" font-family="${FM}" font-size="10" letter-spacing="2" fill="#6E7280" text-anchor="end">ONE FRAME · FIVE ACCENTS</text>
+${col}
+<rect x="36" y="316" width="728" height="1" fill="#FFFFFF" opacity=".12"/>
+<text x="36" y="354" font-family="${F}" font-size="38" font-weight="800" letter-spacing="-1.6" fill="#FFFFFF">FIVE CITIES. FIVE NIGHTS. ONE FRAME.</text>
+<text x="36" y="386" font-family="${FM}" font-size="10" letter-spacing="2" fill="#7E8290">RELEASED OVER FIVE CONSECUTIVE NIGHTS · INSTAGRAM + OUTDOOR</text>
+<text x="36" y="418" font-family="${FM}" font-size="9" letter-spacing="2.2" fill="#5C606C">DZYNSBYSOHAM — ART DIRECTION & DESIGN</text>
+${g.use}
+</svg>`;})()
+},
+
+/* 20 ──────────────────────────────── BANTAI NIGHTS EP */
+{
+  id:'n8', cat:'covers', span:6, w:800, h:450,
+  title:'BANTAI NIGHTS — Original Soundtrack EP',
+  client:'Bantai Nights OST', year:'2026',
+  desc:'Front and back sleeve for a soundtrack EP: a night-city motif, a split colour system and a printed tracklist that matches the poster run.',
+  tags:['EP artwork','Sleeve','Tracklist'],
+  svg:(()=>{ const g=GRAIN(800,450,.32);
+    const sky=LG([[0,'#221230'],[.55,'#5A1E2E'],[1,'#FF4F2E']],90);
+    const tracks=['01 NIGHTFALL (INTRO)','02 STUDIO 44','03 BANTAl NIGHT','04 AFTER HOURS','05 THE LAST SONG','06 4AM DRIVE','07 SIDE B','08 OUTRO'];
+    let tl=''; tracks.forEach((t,i)=>{ tl+=T(436,150+i*30,t,{mono:true,s:11,ls:1.2,c:i===2?'#CCFF2E':'#9A9AA6',w:i===2?600:400}); });
+    let city='';
+    for(let i=0;i<16;i++){ const w=18+((i*37)%40); city+=D(36+i*26,300-w,w,w,'#0A0A0C',{op:.35}); }
+    return `<svg viewBox="0 0 800 450" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Bantai Nights original soundtrack EP sleeve">
+<defs>${sky.s}</defs>
+<rect width="800" height="450" fill="#0A0A0C"/>
+<g transform="translate(36,64)">
+  <rect x="0" y="0" width="330" height="330" fill="url(#${sky.id})"/>
+  <circle cx="252" cy="72" r="34" fill="#FF4F2E"/>
+  <circle cx="252" cy="72" r="52" fill="none" stroke="#FF4F2E" stroke-width="1" opacity=".5"/>
+  ${city}
+  <text x="18" y="44" font-family="${FM}" font-size="9" letter-spacing="2.4" fill="#FFFFFF" opacity=".8">ORIGINAL SOUNDTRACK</text>
+  <text x="18" y="248" font-family="${F}" font-size="54" font-weight="800" letter-spacing="-2.6" fill="#FFFFFF">BANTAI</text>
+  <text x="18" y="296" font-family="${F}" font-size="54" font-weight="800" letter-spacing="-2.6" fill="#CCFF2E">NIGHTS</text>
+  <text x="18" y="318" font-family="${FM}" font-size="8" letter-spacing="2" fill="#FFFFFF" opacity=".7">OST · 8 TRACKS · 2026</text>
+</g>
+<g transform="translate(392,64)">
+  <rect x="0" y="0" width="330" height="330" fill="#141418" stroke="#FFFFFF" stroke-opacity=".12"/>
+  <text x="16" y="40" font-family="${F}" font-size="22" font-weight="800" letter-spacing="-.8" fill="#FFFFFF">BANTAI NIGHTS</text>
+  <text x="16" y="58" font-family="${FM}" font-size="8" letter-spacing="2" fill="#7E8290">TRACKLIST · SIDE A / SIDE B</text>
+  <rect x="16" y="70" width="298" height="1" fill="#FFFFFF" opacity=".16"/>
+  ${tl}
+  <rect x="16" y="272" width="298" height="1" fill="#FFFFFF" opacity=".16"/>
+  <text x="16" y="292" font-family="${FM}" font-size="8" letter-spacing="1.8" fill="#5C606C">DZYNS RECORDINGS · DZS-004 · ℗ 2026</text>
+  ${BARCODE(16,300,90,18,'#7E8290')}
+  <text x="314" y="314" font-family="${FM}" font-size="8" letter-spacing="1.6" fill="#5C606C" text-anchor="end">VINYL · DIGITAL</text>
+</g>
+${g.use}
+</svg>`;})()
+},
+
+/* 21 ──────────────────────────────── RZN width specimen */
+{
+  id:'n9', cat:'typography', span:12, w:800, h:450,
+  title:'RZN THE BOSS — Variable Width Specimen',
+  client:'RZN', year:'2026',
+  desc:'A full-width specimen for a custom width axis, built for a headline wordmark that has to stretch from a 40px story sticker to a 6-metre banner.',
+  tags:['Variable axis','Specimen','Headline system'],
+  svg:(()=>{ const g=GRAIN(800,450,.3);
+    const ws=[62,75,88,100,112,125];
+    let rows='';
+    ws.forEach((w,i)=>{ const y=150+i*38;
+      rows+='<text x="40" y="'+y+'" font-family="'+F+'" font-size="30" font-weight="800" letter-spacing="-1" fill="#0A0A0C" style="font-variation-settings:\'wdth\' '+w+'">RZN</text>';
+      rows+='<text x="196" y="'+y+'" font-family="'+F+'" font-size="30" font-weight="800" letter-spacing="-1" fill="#0A0A0C" style="font-variation-settings:\'wdth\' '+w+'">HEADLINE</text>';
+      rows+='<line x1="40" y1="'+(y+10)+'" x2="470" y2="'+(y+10)+'" stroke="#0A0A0C" stroke-width="1" opacity=".12"/>';
+      rows+='<text x="764" y="'+y+'" font-family="'+FM+'" font-size="10" letter-spacing="1.6" fill="#8A8F9C" text-anchor="end">WDTH '+w+'</text>';
+    });
+    let spec='';
+    ['AXIS  wdth 62 → 125','MASTER  Bricolage Grotesque','TRACKING  -0.5%','CUT  Thin → Black','USE  Story · Sticker · Banner','MASTERED  5 sizes, 3 optical cuts'].forEach((t,i)=>{
+      spec+='<text x="500" y="'+(150+i*38)+'" font-family="'+FM+'" font-size="11" letter-spacing="1.4" fill="#5C606C">'+t+'</text>'; });
+    return `<svg viewBox="0 0 800 450" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="RZN variable width specimen sheet">
+<rect width="800" height="450" fill="#F3F1EA"/>
+<rect x="0" y="0" width="800" height="3" fill="#0A0A0C"/>
+<text x="40" y="52" font-family="${FM}" font-size="10" letter-spacing="2.8" fill="#0A0A0C">RZN THE BOSS — VARIABLE WIDTH SPECIMEN</text>
+<text x="760" y="52" font-family="${FM}" font-size="10" letter-spacing="2" fill="#8A8F9C" text-anchor="end">6 STEPS · 1 AXIS</text>
+<text x="40" y="112" font-family="${F}" font-size="60" font-weight="800" letter-spacing="-2.4" fill="#0A0A0C" style="font-variation-settings:'wdth' 112">RZN THE BOSS</text>
+<rect x="470" y="80" width="1" height="250" fill="#0A0A0C" opacity=".16"/>
+${rows}
+${spec}
+<rect x="40" y="386" width="720" height="3" fill="#0A0A0C"/>
+<text x="40" y="416" font-family="${FM}" font-size="9" letter-spacing="2" fill="#8A8F9C">DZYNSBYSOHAM — TYPE DESIGN FOR RZN THE BOSS</text>
+<text x="760" y="416" font-family="${FM}" font-size="9" letter-spacing="2" fill="#8A8F9C" text-anchor="end">2026</text>
+${g.use}
+</svg>`;})()
+}
+];
+
+return PIECES.map(function(p){ return {
+  id:p.id, cat:p.cat, span:p.span, w:p.w, h:p.h,
+  title:p.title, client:p.client, year:p.year,
+  desc:p.desc, tags:p.tags, svg:p.svg
+}; });
+})();
+
+const CATS = [
+  {k:'all',        label:'All work'},
+  {k:'thumbnails', label:'Thumbnails'},
+  {k:'posters',    label:'Posters'},
+  {k:'covers',     label:'Cover art'},
+  {k:'identity',   label:'Identity'},
+  {k:'typography', label:'Type'},
+  {k:'digital',    label:'Digital'},
+  {k:'editorial',  label:'Editorial'},
+  {k:'objects',    label:'Packaging'}
+];
+</script>
+<script>
+/* ============================================================
+   DZYNSBYSOHAM — interactions
+   ============================================================ */
+(function(){
+'use strict';
+const $  = (s,c)=> (c||document).querySelector(s);
+const $$ = (s,c)=> Array.from((c||document).querySelectorAll(s));
+const REDUCED = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+/* ---------- toast ---------- */
+let toastT;
+function toast(msg){
+  const t=$('#toast'); $('#toastMsg').textContent=msg; t.classList.add('on');
+  clearTimeout(toastT); toastT=setTimeout(()=>t.classList.remove('on'),2600);
+}
+
+/* ---------- progress bar + sticky header ---------- */
+(function scrollUI(){
+  const prog=$('#prog'), hdr=$('#hdr');
+  function upd(){
+    const h=document.documentElement.scrollHeight-innerHeight;
+    const p=h>0?scrollY/h:0;
+    prog.style.width=(p*100).toFixed(2)+'%';
+    hdr.classList.toggle('stuck',scrollY>24);
+  }
+  addEventListener('scroll',upd,{passive:true}); upd();
+})();
+
+/* ---------- reveal on scroll ---------- */
+(function reveal(){
+  const io=new IntersectionObserver((ents)=>{
+    ents.forEach(en=>{ if(en.isIntersecting){ en.target.classList.add('in'); io.unobserve(en.target);} });
+  },{threshold:.12,rootMargin:'0px 0px -8% 0px'});
+  const obs=()=>$$('.rv:not(.in)').forEach(el=>io.observe(el));
+  obs(); setTimeout(obs,400);
+})();
+
+/* ---------- counters ---------- */
+(function counters(){
+  const io=new IntersectionObserver((ents)=>{
+    ents.forEach(en=>{
+      if(!en.isIntersecting) return;
+      const el=en.target, to=+el.dataset.to, dur=1600, t0=performance.now();
+      function step(t){
+        const k=Math.min(1,(t-t0)/dur);
+        const e=1-Math.pow(1-k,3);
+        el.textContent=Math.round(to*e).toLocaleString('en-IN');
+        if(k<1) requestAnimationFrame(step);
+      }
+      requestAnimationFrame(step); io.unobserve(el);
+    });
+  },{threshold:.5});
+  $$('.count').forEach(el=>io.observe(el));
+})();
+
+/* ---------- nav scrollspy ---------- */
+(function spy(){
+  const links=$$('[data-nav]');
+  const secs=links.map(a=>$('#'+a.getAttribute('href').slice(1))).filter(Boolean);
+  const io=new IntersectionObserver((ents)=>{
+    ents.forEach(en=>{
+      if(en.isIntersecting){
+        links.forEach(a=>a.classList.toggle('on',a.getAttribute('href')==='#'+en.target.id));
+      }
+    });
+  },{rootMargin:'-45% 0px -50% 0px'});
+  secs.forEach(s=>io.observe(s));
+})();
+
+/* ---------- mobile menu ---------- */
+(function menu(){
+  const b=$('#burger'), m=$('#mmenu');
+  function set(on){
+    m.classList.toggle('on',on); b.classList.toggle('on',on);
+    b.setAttribute('aria-expanded',on?'true':'false');
+    b.setAttribute('aria-label',on?'Close menu':'Open menu');
+    document.body.style.overflow=on?'hidden':'';
+    if(!on && b.focus) b.focus();
+  }
+  b.addEventListener('click',()=>set(!m.classList.contains('on')));
+  $$('.m-close',m).forEach(a=>a.addEventListener('click',()=>set(false)));
+  document.addEventListener('keydown',e=>{
+    if(e.key==='Escape' && m.classList.contains('on')) set(false);
+  });
+})();
+
+/* ---------- marquee content ---------- */
+(function marquees(){
+  const words=['THUMBNAILS','POSTERS','TYPOGRAPHY','COVER ART','ARTWORK','BRANDING','FLYERS','IDENTITY','RHYTHM','CONTRAST'];
+  let html='';
+  for(let r=0;r<2;r++){
+    words.forEach(w=>{
+      html+='<span class="mq-item">'+w+'<span class="star">✦</span><span class="o">/</span></span>';
+    });
+  }
+  $('#mqRow').innerHTML=html;
+
+  const names=[['EMiWAY BANTAI','b'],['MC STAN','c'],['DIVINE','v'],['RAFTAAR','b'],['SIDHU MOOSE WALA','c'],
+               ['KR$NA','m'],['PRABHDEEP','v'],['MATA','b'],['FENECH','c'],['YOUNG STUNNERS','m'],
+               ['ANJALEE','v'],['SHARMADA','b'],['TALHA ANJUM','c'],['DINO JAMES','m'],['ROHAN ALY','v']];
+  let s='';
+  for(let r=0;r<2;r++){
+    names.forEach(n=>{ s+='<span class="mq-item"><span class="sq '+n[1]+'"></span>'+n[0]+'</span>'; });
+  }
+  $('#sceneRow').innerHTML=s;
+})();
+
+/* ============================================================
+   WORK GRID
+   ============================================================ */
+(function work(){
+  const grid=$('#wgrid'), filt=$('#filters');
+  const counts={all:ART.length};
+  ART.forEach(a=>counts[a.cat]=(counts[a.cat]||0)+1);
+  const CATLABEL={thumbnails:'Thumbnail',posters:'Poster',covers:'Cover art',typography:'Type',identity:'Identity',digital:'Digital',editorial:'Editorial',objects:'Packaging'};
+
+  filt.innerHTML=CATS.map(c=>
+    '<button type="button" class="fbtn'+(c.k==='all'?' on':'')+'" data-cat="'+c.k+'" aria-pressed="'+(c.k==='all')+'"><span class="fill" aria-hidden="true"></span><span>'+c.label+'<i class="c">'+(counts[c.k]||0)+'</i></span></button>'
+  ).join('');
+
+  function card(a){
+    const sp = a.span===12?'w12':(a.span===9?'w9':(a.span===6?'w6':(a.span===3?'w3':'')));
+    return '<div class="witem '+sp+'" data-cat="'+a.cat+'">'+
+      '<button type="button" class="wcard" data-i="'+ART.indexOf(a)+'" aria-label="Open '+a.title.replace(/&/g,'and')+' — '+CATLABEL[a.cat]+'">'+
+        '<span class="art">'+a.svg+'</span>'+
+        '<span class="viewbtn" aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7" stroke-linecap="round" stroke-linejoin="round"/></svg></span>'+
+      '</button>'+
+'<div class="meta"><div class="t">'+a.title+'<small>'+a.client+' · '+a.year+'</small></div><span class="cat">'+CATLABEL[a.cat]+'</span></div>'+
+    '</div>';
+  }
+  function render(cat){
+    const list = cat==='all'?ART:ART.filter(a=>a.cat===cat);
+    grid.innerHTML=list.map(card).join('');
+    const c=$('#wCount');
+    if(c){
+      const lab=(CATS.find(x=>x.k===cat)||{label:''}).label;
+      c.textContent=list.length+(list.length===1?' piece — ':' pieces — ')+lab;
+    }
+  }
+  render('all');
+
+  filt.addEventListener('click',e=>{
+    const b=e.target.closest('.fbtn'); if(!b) return;
+    $$('.fbtn',filt).forEach(x=>{ x.classList.remove('on'); x.setAttribute('aria-pressed','false'); });
+    b.classList.add('on'); b.setAttribute('aria-pressed','true');
+    render(b.dataset.cat);
+  });
+})();
+
+/* ============================================================
+   LIGHTBOX
+   ============================================================ */
+(function lightbox(){
+  const lb=$('#lb'), art=$('#lbArt'), title=$('#lbTitle'), desc=$('#lbDesc'), tags=$('#lbTags'), close=$('#lbClose');
+  let idx=0, list=[];
+
+  let lastFocus=null;
+  function open(i){
+    list = $$('#wgrid .wcard').map(c=>ART[+c.dataset.i]);
+    if(!list.length) return;
+    idx=(i+list.length)%list.length;
+    const a=list[idx];
+    art.innerHTML=a.svg;
+    title.textContent=a.title;
+    desc.textContent=a.desc;
+    tags.innerHTML=a.tags.map(t=>'<span class="chip">'+t+'</span>').join('');
+    lastFocus=document.activeElement;
+    lb.classList.add('on'); close.classList.add('on');
+    document.body.style.overflow='hidden';
+    setTimeout(()=>{try{close.focus({preventScroll:true});}catch(e){close.focus();}},40);
+  }
+  function closeLb(){
+    lb.classList.remove('on'); close.classList.remove('on'); document.body.style.overflow='';
+    if(lastFocus && lastFocus.focus) lastFocus.focus();
+  }
+  function trap(container,e){
+    if(e.key!=='Tab') return;
+    const f=$$('a[href],button:not([disabled]),input:not([disabled]),select,textarea,[tabindex]:not([tabindex="-1"])',container)
+      .filter(el=>el.offsetParent!==null || el===document.activeElement);
+    if(!f.length) return;
+    const first=f[0], last=f[f.length-1];
+    if(e.shiftKey && document.activeElement===first){ e.preventDefault(); last.focus(); }
+    else if(!e.shiftKey && document.activeElement===last){ e.preventDefault(); first.focus(); }
+  }
+
+  document.addEventListener('click',e=>{
+    const c=e.target.closest('#wgrid .wcard');
+    if(c){ open(+c.dataset.i); return; }
+    if(e.target.closest('#lbClose') || e.target===lb) closeLb();
+    else if(e.target.closest('#lbNext')) open(idx+1);
+    else if(e.target.closest('#lbPrev')) open(idx-1);
+  });
+  document.addEventListener('keydown',e=>{
+    if(!lb.classList.contains('on')) return;
+    if(e.key==='Escape'){ closeLb(); return; }
+    if(e.key==='ArrowRight'){ open(idx+1); return; }
+    if(e.key==='ArrowLeft'){ open(idx-1); return; }
+    trap(lb,e);
+  });
+})();
+
+/* ---------- testimonials ---------- */
+(function tst(){
+  const data=[
+    {q:'Soham built our whole thumbnail system. Every upload now looks like it belongs to the same artist — and our click-through rate jumped.',
+     n:'Rohan A.',r:'Manager / Independent Artist',bg:'#CCFF2E',ini:'RA',s:5},
+    {q:'Fastest designer I have worked with. Poster was in my inbox before I finished the voice note. The type is genuinely beautiful.',
+     n:'Fenech Crew',r:'Label / Mumbai',bg:'#2B4CFF',ini:'FC',s:5,lt:1},
+    {q:'He gets rap. Not "design that looks like rap" — actually rap. The flyer we ran for the show is still the thing everyone remembers.',
+     n:'Sharma Ji',r:'Event Organiser / Delhi',bg:'#FF4F2E',ini:'SJ',s:5},
+    {q:'Cover art that finally matches the energy of the record. He sent two directions and both were better than what I had in my head.',
+     n:'MC VAJ',r:'Rapper',bg:'#9B7BFF',ini:'MV',s:5},
+    {q:'Consistent, professional, zero drama. The DHH series looks like a brand, not a folder of random images.',
+     n:'Tanha S.',r:'Creative Lead / DHH',bg:'#00E0A4',ini:'TS',s:5}
+  ];
+  const star='<svg viewBox="0 0 24 24"><path d="M12 2l3 6.5 7 .9-5 4.8 1.3 7L12 17.8 5.7 21.2 7 14.2 2 9.4l7-.9z"/></svg>';
+  $('#tstRow').innerHTML=data.map(d=>
+    '<div class="tst"><div class="stars">'+star.repeat(d.s)+'</div>'+
+    '<div class="quote">“'+d.q+'”</div>'+
+    '<div class="who"><span class="av'+(d.lt?' lt':'')+'" style="background:'+d.bg+'">'+d.ini+'</span>'+
+    '<span><span class="nm">'+d.n+'</span><br><span class="rl">'+d.r+'</span></span></div></div>'
+  ).join('');
+})();
+
+/* ---------- process steps ---------- */
+(function proc(){
+  const st=$$('#proc .st');
+  const io=new IntersectionObserver(ents=>{
+    ents.forEach(en=>{
+      if(!en.isIntersecting) return;
+      const items=$$('#proc .st');
+      items.forEach((s,j)=>setTimeout(()=>s.classList.add('done'), j*260));
+    });
+  },{threshold:.25});
+  st.forEach(s=>io.observe(s));
+})();
+
+
+/* ============================================================
+   RESUME OVERLAY
+   ============================================================ */
+(function resume(){
+  const cv=$('#cv'), close=$('#cvClose'), print=$('#cvPrint');
+  if(!cv) return;
+  let last=null;
+  function open(){
+    last=document.activeElement;
+    cv.classList.add('on'); close.classList.add('on');
+    document.body.style.overflow='hidden';
+    setTimeout(()=>{try{close.focus({preventScroll:true});}catch(e){close.focus();}},40);
+  }
+  function shut(){
+    cv.classList.remove('on'); close.classList.remove('on');
+    document.body.style.overflow='';
+    if(last && last.focus) last.focus();
+  }
+  ['#cvOpen','#cvOpenM','#cvOpenF'].forEach(sel=>{
+    const b=$(sel); if(b) b.addEventListener('click',e=>{ e.preventDefault(); open(); });
+  });
+  close.addEventListener('click',shut);
+  cv.addEventListener('click',e=>{ if(e.target===cv) shut(); });
+  if(print) print.addEventListener('click',()=>{ window.print(); });
+  document.addEventListener('keydown',e=>{
+    if(!cv.classList.contains('on')) return;
+    if(e.key==='Escape'){ shut(); return; }
+    if(e.key==='Tab'){
+      const f=$$('a[href],button:not([disabled]),input:not([disabled]),[tabindex]:not([tabindex="-1"])',cv)
+        .filter(el=>el.offsetParent!==null);
+      if(!f.length) return;
+      const first=f[0], last=f[f.length-1];
+      if(e.shiftKey && document.activeElement===first){ e.preventDefault(); last.focus(); }
+      else if(!e.shiftKey && document.activeElement===last){ e.preventDefault(); first.focus(); }
+    }
+  });
+})();
+
+/* ============================================================
+   BRIEF BUILDER
+   ============================================================ */
+(function brief(){
+  const S={svc:'Thumbnail pack (3–5)',time:'This week',bud:'₹6k – 15k'};
+  const sets=[
+    {el:'#bService',key:'svc',opts:['Thumbnail pack (3–5)','Single poster / flyer','Album or cover art','Artist identity','Full rollout pack']},
+    {el:'#bTime',key:'time',opts:['Urgent — 24 hours','This week','2 weeks','Flexible']},
+    {el:'#bBudget',key:'bud',opts:['Under ₹3k','₹3k – 6k','₹6k – 15k','₹15k – 40k','₹40k+']}
+  ];
+  function paint(){
+    sets.forEach(s=>{
+      $(s.el).innerHTML=s.opts.map(o=>'<button type="button" class="bchip'+(S[s.key]===o?' on':'')+'" data-o="'+o+'" aria-pressed="'+(S[s.key]===o)+'">'+o+'</button>').join('');
+    });
+    const msg=
+"Hi Soham!\n"+
+"I'd like to work on: "+S.svc+"\n"+
+"Timeline: "+S.time+"\n"+
+"Budget: "+S.bud+"\n\n"+
+"Artist / project name:\n"+
+"Song / release:\n"+
+"References (if any):\n\n"+
+"— Sent from the DzynsBySoham portfolio";
+    $('#bPreview').textContent=msg;
+    $('#bWa').href='https://wa.me/918329014831?text='+encodeURIComponent(msg);
+  }
+  sets.forEach(s=>{
+    $(s.el).addEventListener('click',e=>{
+      const b=e.target.closest('.bchip'); if(!b) return;
+      S[s.key]=b.dataset.o; paint();
+    });
+  });
+  paint();
+  $('#bCopy').addEventListener('click',async()=>{
+    const t=$('#bPreview').textContent;
+    try{ await navigator.clipboard.writeText(t); toast('Brief copied to clipboard'); }
+    catch(e){
+      const ta=document.createElement('textarea'); ta.value=t; document.body.appendChild(ta); ta.select();
+      try{ document.execCommand('copy'); toast('Brief copied to clipboard'); }catch(_){ toast('Copy failed — select manually'); }
+      ta.remove();
+    }
+  });
+  $('#bIg').addEventListener('click',async(e)=>{
+    e.preventDefault();
+    const t=$('#bPreview').textContent;
+    let ok=false;
+    try{ await navigator.clipboard.writeText(t); ok=true; }catch(_){}
+    toast(ok?'Brief copied — paste it in the DM':'Opening Instagram — copy the brief manually');
+    setTimeout(()=>{ window.open('https://instagram.com/dzynsbysoham','_blank','noopener'); }, ok?700:100);
+  });
+})();
+
+/* ---------- smooth anchor offset for sticky header ---------- */
+$$('a[href^="#"]').forEach(a=>{
+  if(a.classList.contains('skip')) return;
+  a.addEventListener('click',e=>{
+    const id=a.getAttribute('href'); if(id.length<2) return;
+    const el=document.querySelector(id); if(!el) return;
+    e.preventDefault();
+    const top=el.getBoundingClientRect().top+scrollY-(id==='#top'?0:70);
+    scrollTo({top,behavior:REDUCED?'auto':'smooth'});
+  });
+});
+})();
+</script>
+<script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a4cb9f157eb9ff61',t:'MTc5MjM2OTI3Mw=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
